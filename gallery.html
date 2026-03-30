@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | Education Beyond Borders</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="Go to home">
+          <div class="brand__logo" aria-label="Education Beyond Borders">
+            <img class="brand__logo-image" src="./logo.png" alt="Education Beyond Borders logo" />
+          </div>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="./index.html">Home</a>
+          <a href="./about.html">About Us</a>
+          <a href="./programs.html">Programs</a>
+          <a href="./report.html">Impact Report</a>
+          <a href="./blog.html">Blog</a>
+          <a class="is-active" href="./gallery.html">Gallery</a>
+          <a href="./partnerships.html">Partnerships</a>
+        </nav>
+        <a class="button button--primary button--small" href="./contact.html">Contact Us</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+
+      <main>
+        <section class="subpage-hero">
+          <div class="subpage-hero__content">
+            <div class="eyebrow">GALLERY</div>
+            <h1>Snapshots from classrooms, community work, and collaboration.</h1>
+            <p>
+              These moments reflect the energy, trust, and progress that make every partnership meaningful.
+            </p>
+          </div>
+        </section>
+
+        <section class="gallery section">
+          <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" alt="Students learning together in a classroom" />
+            <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=80" alt="Teacher engaging with students during a session" />
+            <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=900&q=80" alt="Students collaborating on a project" />
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer__bottom">
+          <span>&copy; 2026 Education Beyond Borders. All rights reserved.</span>
+        </div>
+      </footer>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
