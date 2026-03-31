@@ -51,16 +51,73 @@
         <section class="contact-panel section">
           <article class="card">
             <h3>Email</h3>
-            <p>hello@educationbeyondborders.org</p>
+            <p>connect@ebbindia.com</p>
           </article>
           <article class="card">
             <h3>Phone</h3>
-            <p>+1 (555) 123-4567</p>
+            <p>+91 9871440094</p>
           </article>
           <article class="card">
             <h3>Address</h3>
-            <p>123 Education Hub Blvd, Innovation City, 10001</p>
+            <p>40C, Green View Apartments, Sector-15A,  Noida, Uttar Pradesh-201301</p>
           </article>
+        </section>
+
+        <section class="contact-form-section section">
+          <div class="contact-form-layout">
+            <div class="contact-form-intro">
+              <div class="eyebrow">SEND A MESSAGE</div>
+              <h2>Tell us how we can help.</h2>
+              <p>
+                Share a few details and our team will connect with you to discuss partnerships,
+                programs, volunteering, or general questions.
+              </p>
+              <ul class="contact-form-highlights">
+                <li>School and NGO partnerships</li>
+                <li>CSR and sponsorship conversations</li>
+                <li>Volunteer and community engagement</li>
+              </ul>
+            </div>
+
+            <form class="contact-form card" id="contactForm">
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>Full Name</span>
+                  <input type="text" name="name" placeholder="Enter your full name" required />
+                </label>
+
+                <label class="form-field">
+                  <span>Email Address</span>
+                  <input type="email" name="email" placeholder="Enter your email" required />
+                </label>
+
+                <label class="form-field">
+                  <span>Phone Number</span>
+                  <input type="tel" name="phone" placeholder="Enter your phone number" />
+                </label>
+
+                <label class="form-field">
+                  <span>Subject</span>
+                  <input type="text" name="subject" placeholder="What would you like to discuss?" required />
+                </label>
+              </div>
+
+              <label class="form-field">
+                <span>Message</span>
+                <textarea
+                  name="message"
+                  rows="6"
+                  placeholder="Tell us a little about your inquiry"
+                  required
+                ></textarea>
+              </label>
+
+              <div class="form-actions">
+                <button class="button button--primary" type="submit">Submit Inquiry</button>
+                <p class="form-status" id="formStatus" aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
         </section>
       </main>
 
