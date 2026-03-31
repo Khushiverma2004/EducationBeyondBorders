@@ -54,7 +54,7 @@ img {
   z-index: 30;
   display: grid;
   place-items: center;
-  background: #000;
+  background: black;
   transition:
     opacity 0.7s ease,
     visibility 0.7s ease;
@@ -400,10 +400,17 @@ img {
 .card__icon svg,
 .cta__icon svg,
 .footer__contact-item svg,
+.footer__contact-item img,
 .socials svg {
   width: 24px;
   height: 24px;
   fill: currentColor;
+}
+
+.footer__contact-item:first-child svg,
+.footer__contact-item:first-child img {
+  width: 30px;
+  height: 30px;
 }
 
 .floating-stat strong {
