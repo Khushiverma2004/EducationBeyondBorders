@@ -1163,6 +1163,14 @@ img {
   text-align: right;
 }
 
+.form-status.is-success {
+  color: #13795b;
+}
+
+.form-status.is-error {
+  color: #c63b3b;
+}
+
 .about-intro,
 .story-showcase__grid,
 .implementation__header,

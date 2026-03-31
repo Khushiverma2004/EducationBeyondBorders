@@ -2,6 +2,8 @@ const introLoader = document.getElementById("introLoader");
 const menuToggle = document.getElementById("menuToggle");
 const nav = document.querySelector(".nav");
 const statNumbers = document.querySelectorAll(".stat-item strong[data-count-to]");
+const contactForm = document.querySelector("[data-contact-form]");
+const formStatus = document.querySelector("[data-form-status]");
 const revealTargets = document.querySelectorAll(
   ".hero__content, .about, .section-heading, .card, .stat-item, .cta, .footer"
 );
@@ -84,3 +86,51 @@ const observer = new IntersectionObserver(
 
 revealTargets.forEach((element) => observer.observe(element));
 statNumbers.forEach((element) => statsObserver.observe(element));
+
+contactForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton?.textContent || "Submit Inquiry";
+
+  if (formStatus) {
+    formStatus.textContent = "Submitting your inquiry...";
+    formStatus.classList.remove("is-success", "is-error");
+  }
+
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+  }
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: contactForm.method,
+      body: new FormData(contactForm),
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Submission failed");
+    }
+
+    contactForm.reset();
+
+    if (formStatus) {
+      formStatus.textContent = "Thank you! Your message has been sent successfully.";
+      formStatus.classList.add("is-success");
+    }
+  } catch (error) {
+    if (formStatus) {
+      formStatus.textContent = "Sorry, your message could not be sent. Please try again.";
+      formStatus.classList.add("is-error");
+    }
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
+  }
+});
