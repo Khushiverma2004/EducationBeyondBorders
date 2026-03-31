@@ -837,11 +837,12 @@ img {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
   gap: 42px;
-  align-items: start;
+  align-items: center;
 }
 
 .contact-form-intro {
   padding: 12px 0;
+  max-width: 540px;
 }
 
 .contact-form-intro h2 {
@@ -889,12 +890,13 @@ img {
 .contact-form {
   display: grid;
   gap: 24px;
+  padding: 40px;
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
 .form-field {
@@ -911,12 +913,14 @@ img {
 .form-field input,
 .form-field textarea {
   width: 100%;
+  display: block;
   border: 1px solid rgba(24, 60, 107, 0.12);
   border-radius: 18px;
   background: #f8fbff;
   padding: 16px 18px;
   font: inherit;
   color: #16345c;
+  box-sizing: border-box;
   transition:
     border-color 0.25s ease,
     box-shadow 0.25s ease,
@@ -944,6 +948,7 @@ img {
 .form-actions {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 18px;
   flex-wrap: wrap;
 }
@@ -953,6 +958,8 @@ img {
   font-size: 0.96rem;
   font-weight: 600;
   color: #0f4f85;
+  flex: 1 1 220px;
+  text-align: right;
 }
 
 .about-intro,
