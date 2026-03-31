@@ -826,6 +826,207 @@ img {
   gap: 32px;
 }
 
+.impact-summary {
+  padding-top: 34px;
+  padding-bottom: 52px;
+  background: #fff;
+}
+
+.impact-summary__grid {
+  width: min(var(--container), 1040px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.impact-stat {
+  padding: 34px 24px 30px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 14px 28px rgba(27, 57, 96, 0.1);
+}
+
+.impact-stat--blue {
+  background: #eaf1fb;
+}
+
+.impact-stat--cream {
+  background: #fbf1e2;
+}
+
+.impact-stat--green {
+  background: #e7f6ef;
+}
+
+.impact-stat__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 18px;
+}
+
+.impact-stat__icon svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.impact-stat--blue .impact-stat__icon {
+  color: #2d76ef;
+}
+
+.impact-stat--cream .impact-stat__icon {
+  color: #ff7a14;
+}
+
+.impact-stat--green .impact-stat__icon {
+  color: #14b866;
+}
+
+.impact-stat strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: clamp(2.8rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.07em;
+  color: #143765;
+}
+
+.impact-stat span {
+  display: block;
+  font-size: 1.02rem;
+  color: #607694;
+}
+
+.impact-reports {
+  padding: 88px 0 96px;
+  background: linear-gradient(180deg, #eef4fb 0%, #edf3fb 100%);
+}
+
+.impact-reports__layout {
+  width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.62fr);
+  gap: 34px;
+  align-items: center;
+}
+
+.impact-reports__content h2 {
+  margin: 0 0 20px;
+  font-size: clamp(2.6rem, 4vw, 4rem);
+  line-height: 1.04;
+  letter-spacing: -0.06em;
+  color: #123764;
+}
+
+.impact-reports__content p {
+  max-width: 620px;
+  margin: 0 0 34px;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: #617895;
+}
+
+.impact-report-list {
+  display: grid;
+  gap: 16px;
+}
+
+.impact-report-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 18px 22px 22px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(24, 60, 107, 0.08);
+  box-shadow: 0 10px 22px rgba(27, 57, 96, 0.08);
+}
+
+.impact-report-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  line-height: 1.2;
+  color: #123764;
+}
+
+.impact-report-item p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #617895;
+}
+
+.impact-report-item__tag {
+  flex-shrink: 0;
+  padding: 9px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 122, 20, 0.28);
+  color: #ff7a14;
+  background: #fff8f1;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.impact-breakdown {
+  padding: 34px 24px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #173c69, #112e52);
+  color: #fff;
+  box-shadow: 0 18px 32px rgba(17, 46, 82, 0.24);
+}
+
+.impact-breakdown h3 {
+  margin: 0 0 28px;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+.impact-breakdown__item + .impact-breakdown__item {
+  margin-top: 22px;
+}
+
+.impact-breakdown__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+  font-size: 0.98rem;
+}
+
+.impact-breakdown__row span {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.impact-breakdown__row strong {
+  color: #ff7a14;
+}
+
+.impact-breakdown__bar {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+
+.impact-breakdown__bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff7a14, #ff9e4d);
+}
+
 .contact-form-section {
   padding-top: 12px;
   padding-bottom: 92px;
@@ -1400,6 +1601,8 @@ img {
   .story-showcase__cards,
   .cards,
   .subpage-grid,
+  .impact-summary__grid,
+  .impact-reports__layout,
   .contact-panel,
   .contact-form-layout,
   .core-values__grid,
@@ -1450,6 +1653,15 @@ img {
 
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .impact-report-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .impact-report-item__tag {
+    align-self: flex-start;
   }
 
   .stat-item {
@@ -1566,6 +1778,18 @@ img {
 
   .card h3 {
     font-size: 1.65rem;
+  }
+
+  .impact-stat {
+    padding: 28px 18px 24px;
+  }
+
+  .impact-reports {
+    padding: 70px 0 78px;
+  }
+
+  .impact-breakdown {
+    padding: 28px 18px;
   }
 
   .footer {

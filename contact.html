@@ -40,7 +40,7 @@
         <section class="subpage-hero">
           <div class="subpage-hero__content">
             <div class="eyebrow">CONTACT</div>
-            <h1>Let’s plan the next step together.</h1>
+            <h1>Let's plan the next step together.</h1>
             <p>
               Reach out if you want to start a school partnership, discuss CSR collaboration, or
               learn more about our programs.
@@ -79,7 +79,13 @@
               </ul>
             </div>
 
-            <form class="contact-form card" id="contactForm">
+            <form
+              class="contact-form card"
+              action="https://formsubmit.co/connect@ebbindia.com"
+              method="POST"
+            >
+              <input type="hidden" name="_subject" value="New contact inquiry from Education Beyond Borders" />
+              <input type="hidden" name="_template" value="table" />
               <div class="form-grid">
                 <label class="form-field">
                   <span>Full Name</span>
@@ -109,7 +115,7 @@
 
               <div class="form-actions">
                 <button class="button button--primary" type="submit">Submit Inquiry</button>
-                <p class="form-status" id="formStatus" aria-live="polite"></p>
+               
               </div>
             </form>
           </div>
@@ -125,3 +131,4 @@
     <script src="./script.js"></script>
   </body>
 </html>
+

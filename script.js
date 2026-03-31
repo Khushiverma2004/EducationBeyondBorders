@@ -1,8 +1,7 @@
 const introLoader = document.getElementById("introLoader");
 const menuToggle = document.getElementById("menuToggle");
 const nav = document.querySelector(".nav");
-const contactForm = document.getElementById("contactForm");
-const formStatus = document.getElementById("formStatus");
+const statNumbers = document.querySelectorAll(".stat-item strong[data-count-to]");
 const revealTargets = document.querySelectorAll(
   ".hero__content, .about, .section-heading, .card, .stat-item, .cta, .footer"
 );
@@ -31,22 +30,43 @@ nav?.querySelectorAll("a").forEach((link) => {
   });
 });
 
-contactForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
+const animateCount = (element) => {
+  const target = Number(element.dataset.countTo || 0);
+  const suffix = element.dataset.countSuffix || "";
+  const duration = 1600;
+  const startTime = performance.now();
 
-  if (!contactForm.reportValidity()) {
-    return;
+  const updateCount = (currentTime) => {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easedProgress = 1 - Math.pow(1 - progress, 3);
+    const value = Math.round(target * easedProgress);
+
+    element.textContent = `${value}${suffix}`;
+
+    if (progress < 1) {
+      requestAnimationFrame(updateCount);
+    }
+  };
+
+  requestAnimationFrame(updateCount);
+};
+
+const statsObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      animateCount(entry.target);
+      statsObserver.unobserve(entry.target);
+    });
+  },
+  {
+    threshold: 0.6,
   }
-
-  const formData = new FormData(contactForm);
-  const name = formData.get("name")?.toString().trim() || "there";
-
-  if (formStatus) {
-    formStatus.textContent = `Thanks ${name}, your message has been recorded. We'll reach out soon.`;
-  }
-
-  contactForm.reset();
-});
+);
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -63,3 +83,4 @@ const observer = new IntersectionObserver(
 );
 
 revealTargets.forEach((element) => observer.observe(element));
+statNumbers.forEach((element) => statsObserver.observe(element));
