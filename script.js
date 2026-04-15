@@ -5,7 +5,7 @@ const statNumbers = document.querySelectorAll(".stat-item strong[data-count-to]"
 const contactForm = document.querySelector("[data-contact-form]");
 const formStatus = document.querySelector("[data-form-status]");
 const revealTargets = document.querySelectorAll(
-  ".hero__content, .about, .section-heading, .card, .stat-item, .cta, .footer"
+  ".hero__content, .about, .section-heading, .card, .stat-item, .cta, .footer, .gallery-grid"
 );
 
 revealTargets.forEach((element) => {
