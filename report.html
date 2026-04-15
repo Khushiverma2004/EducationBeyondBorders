@@ -57,6 +57,8 @@ img{max-width:100%;display:block}
 .hstat{padding:1.5rem 1rem;text-align:center;background:rgba(255,255,255,.08)}
 .hstat .num{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:800;color:#fff;line-height:1}
 .hstat .lbl{font-size:11px;color:rgba(255,255,255,.6);margin-top:4px;line-height:1.3}
+.scroll-pop{opacity:0;transform:translateY(22px) scale(.985);transition:opacity .65s ease,transform .65s ease}
+.scroll-pop.is-visible{opacity:1;transform:translateY(0) scale(1)}
 
 /* PHOTO STRIP */
 .photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin:3rem 0 2.5rem;border-radius:var(--radius-lg);overflow:hidden}
@@ -97,6 +99,7 @@ img{max-width:100%;display:block}
 .chart-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem}
 .chart-box h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:700;color:var(--cobalt);margin-bottom:1rem}
 .chart-wrap{position:relative;width:100%;height:220px}
+.chart-box.is-visible canvas{animation:chartLift .9s ease}
 
 .arc-row{display:flex;gap:8px;margin-bottom:2.5rem}
 .arc-phase{flex:1;border-radius:var(--radius-md);padding:1rem}
@@ -185,6 +188,7 @@ img{max-width:100%;display:block}
   .photo-strip{grid-template-columns:repeat(2,1fr)}
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes chartLift{from{opacity:.2;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 .school-card{animation:fadeUp .45s ease both}
 .school-card:nth-child(1){animation-delay:.05s}.school-card:nth-child(2){animation-delay:.1s}
 .school-card:nth-child(3){animation-delay:.15s}.school-card:nth-child(4){animation-delay:.2s}
@@ -521,39 +525,126 @@ img{max-width:100%;display:block}
 
 <script>
 const labels=['Chetram','GGIC','Udaar 5-7','Udaar 8-10','Noida Kanya','Kisan Adarsh','SGSM','SBS'];
-new Chart(document.getElementById('scoreChart'),{
-  type:'bar',
-  data:{labels,datasets:[
-    {label:'Pre-assessment avg',data:[50,56,36,61,33,43,36,71],backgroundColor:'#B2EBF2',borderRadius:6,borderSkipped:false},
-    {label:'Post-assessment avg',data:[83,78,79,86,69,75,71,91],backgroundColor:'#0090A8',borderRadius:6,borderSkipped:false}
-  ]},
-  options:{responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:true,position:'bottom',labels:{font:{size:11},boxWidth:10,padding:12,color:'#4B7080'}}},
-    scales:{
-      x:{ticks:{font:{size:10},color:'#4B7080'},grid:{display:false}},
-      y:{min:0,max:100,ticks:{font:{size:10},color:'#4B7080',callback:v=>v+'%'},grid:{color:'rgba(0,176,204,0.08)'}}
-    }
-  }
-});
-new Chart(document.getElementById('studentsChart'),{
-  type:'bar',
-  data:{labels,datasets:[{label:'Students',data:[267,119,42,35,343,75,65,56],
-    backgroundColor:['#00B4CC','#29C4D8','#4DD0E1','#80DEEA','#1B4F8A','#2563A8','#3B7EC0','#5491CC'],
-    borderRadius:6,borderSkipped:false}]},
-  options:{responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false}},
-    scales:{
-      x:{ticks:{font:{size:10},color:'#4B7080'},grid:{display:false}},
-      y:{ticks:{font:{size:10},color:'#4B7080'},grid:{color:'rgba(0,176,204,0.08)'}}
-    }
-  }
-});
+const scoreChartCanvas=document.getElementById('scoreChart');
+const studentsChartCanvas=document.getElementById('studentsChart');
+let scoreChartInstance=null;
+let studentsChartInstance=null;
 
 const menuToggle=document.getElementById('menuToggle');
 const siteNav=document.getElementById('siteNav');
 if(menuToggle&&siteNav){
   menuToggle.addEventListener('click',()=>siteNav.classList.toggle('is-open'));
 }
+
+const buildScoreChart=()=>{
+  if(scoreChartInstance||!scoreChartCanvas)return;
+  scoreChartInstance=new Chart(scoreChartCanvas,{
+    type:'bar',
+    data:{labels,datasets:[
+      {label:'Pre-assessment avg',data:[50,56,36,61,33,43,36,71],backgroundColor:'#B2EBF2',borderRadius:6,borderSkipped:false},
+      {label:'Post-assessment avg',data:[83,78,79,86,69,75,71,91],backgroundColor:'#0090A8',borderRadius:6,borderSkipped:false}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:1400,easing:'easeOutQuart'},
+      plugins:{legend:{display:true,position:'bottom',labels:{font:{size:11},boxWidth:10,padding:12,color:'#4B7080'}}},
+      scales:{
+        x:{ticks:{font:{size:10},color:'#4B7080'},grid:{display:false}},
+        y:{min:0,max:100,ticks:{font:{size:10},color:'#4B7080',callback:v=>v+'%'},grid:{color:'rgba(0,176,204,0.08)'}}
+      }
+    }
+  });
+};
+
+const buildStudentsChart=()=>{
+  if(studentsChartInstance||!studentsChartCanvas)return;
+  studentsChartInstance=new Chart(studentsChartCanvas,{
+    type:'bar',
+    data:{labels,datasets:[{label:'Students',data:[267,119,42,35,343,75,65,56],
+      backgroundColor:['#00B4CC','#29C4D8','#4DD0E1','#80DEEA','#1B4F8A','#2563A8','#3B7EC0','#5491CC'],
+      borderRadius:6,borderSkipped:false}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:1400,easing:'easeOutQuart'},
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{ticks:{font:{size:10},color:'#4B7080'},grid:{display:false}},
+        y:{ticks:{font:{size:10},color:'#4B7080'},grid:{color:'rgba(0,176,204,0.08)'}}
+      }
+    }
+  });
+};
+
+const countUp=(element)=>{
+  if(element.dataset.counted==='true')return;
+  const original=(element.dataset.originalText||element.textContent).trim();
+  element.dataset.originalText=original;
+  const numberMatch=original.match(/-?\d[\d,]*(?:\.\d+)?/);
+  if(!numberMatch)return;
+  const rawNumber=numberMatch[0];
+  const target=Number(rawNumber.replace(/,/g,''));
+  if(Number.isNaN(target))return;
+  const prefix=original.slice(0,numberMatch.index);
+  const suffix=original.slice((numberMatch.index||0)+rawNumber.length);
+  const duration=1400;
+  const start=performance.now();
+  const decimals=(rawNumber.split('.')[1]||'').length;
+  element.dataset.counted='true';
+
+  const formatValue=(value)=>{
+    const fixed=decimals?value.toFixed(decimals):Math.round(value).toString();
+    const [integerPart,decimalPart]=fixed.split('.');
+    const withCommas=Number(integerPart).toLocaleString('en-US');
+    return decimalPart?`${withCommas}.${decimalPart}`:withCommas;
+  };
+
+  const tick=(now)=>{
+    const progress=Math.min((now-start)/duration,1);
+    const eased=1-Math.pow(1-progress,3);
+    const current=target*eased;
+    element.textContent=`${prefix}${formatValue(current)}${suffix}`;
+    if(progress<1){
+      requestAnimationFrame(tick);
+    }else{
+      element.textContent=original;
+    }
+  };
+
+  requestAnimationFrame(tick);
+};
+
+const animatedBlocks=document.querySelectorAll('.hstat,.metric-card,.beh-card,.chart-box,.g-block');
+animatedBlocks.forEach((element,index)=>{
+  element.classList.add('scroll-pop');
+  element.style.transitionDelay=`${(index%4)*80}ms`;
+});
+
+const numberTargets=document.querySelectorAll('.hstat .num,.metric-card .big,.beh-card .pct,.g-block .num');
+const chartTargets=document.querySelectorAll('.chart-box');
+
+const sectionObserver=new IntersectionObserver((entries,observer)=>{
+  entries.forEach((entry)=>{
+    if(!entry.isIntersecting)return;
+    entry.target.classList.add('is-visible');
+    if(entry.target.matches('.hstat,.metric-card,.beh-card,.g-block')){
+      const numberNode=entry.target.querySelector('.num,.big,.pct');
+      if(numberNode)countUp(numberNode);
+    }
+    if(entry.target.contains(scoreChartCanvas))buildScoreChart();
+    if(entry.target.contains(studentsChartCanvas))buildStudentsChart();
+    observer.unobserve(entry.target);
+  });
+},{threshold:.35});
+
+animatedBlocks.forEach((element)=>sectionObserver.observe(element));
+
+numberTargets.forEach((element)=>{
+  const parent=element.closest('.hstat,.metric-card,.beh-card,.g-block');
+  if(parent&&parent.classList.contains('is-visible'))countUp(element);
+});
+
+chartTargets.forEach((chartBox)=>{
+  if(chartBox.classList.contains('is-visible')){
+    if(chartBox.contains(scoreChartCanvas))buildScoreChart();
+    if(chartBox.contains(studentsChartCanvas))buildStudentsChart();
+  }
+});
 </script>
 
 
