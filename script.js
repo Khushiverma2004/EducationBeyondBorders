@@ -1,11 +1,11 @@
 const introLoader = document.getElementById("introLoader");
 const menuToggle = document.getElementById("menuToggle");
 const nav = document.querySelector(".nav");
-const statNumbers = document.querySelectorAll(".stat-item strong[data-count-to]");
+const statNumbers = document.querySelectorAll(".stat-item strong[data-count-to], .impact-num[data-count-to]");
 const contactForm = document.querySelector("[data-contact-form]");
 const formStatus = document.querySelector("[data-form-status]");
 const revealTargets = document.querySelectorAll(
-  ".hero__content, .about, .section-heading, .card, .stat-item, .cta, .footer, .gallery-grid"
+  ".hero__content, .hero-content, .hero-visual, .about, .story, .section-heading, .card, .pillar, .impact-card, .stat-item, .cta, .footer, .gallery-grid, .cta-inner, .gallery-item"
 );
 
 revealTargets.forEach((element) => {
