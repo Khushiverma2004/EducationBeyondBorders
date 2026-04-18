@@ -812,7 +812,7 @@ img {
 
 .hero-content p {
   max-width: 520px;
-  margin: 0 0 46px;
+  margin: 0 0 62px;
   font-size: 1.06rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.84);
@@ -825,6 +825,7 @@ img {
   flex-wrap: wrap;
   align-items: center;
   gap: 26px;
+  margin-top: 22px;
   margin-bottom: 28px;
   animation: heroRise 0.10s ease 0.45s both;
 }
