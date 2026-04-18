@@ -3,20 +3,729 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us | Education Beyond Borders </title>
+    <title>About Us | Education Beyond Borders</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,800;1,400&family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
+    <style>
+      :root {
+        --about-teal: #00b4cc;
+        --about-teal-dark: #0090a8;
+        --about-teal-light: #e0f7fa;
+        --about-cobalt: #1b4f8a;
+        --about-cobalt-light: #e8f0f9;
+        --about-surface: #eef8fa;
+        --about-bg: #f5fbfc;
+        --about-border: rgba(0, 176, 204, 0.16);
+        --about-text: #0d2b3e;
+        --about-muted: #4b7080;
+      }
+
+      body.about-page {
+        background: var(--about-bg);
+        color: var(--about-text);
+      }
+
+      .about-page main {
+        overflow: hidden;
+      }
+
+      .about-hero {
+        position: relative;
+        padding: 96px 0 138px;
+        background: linear-gradient(
+          135deg,
+          var(--about-cobalt) 0%,
+          var(--about-teal-dark) 58%,
+          var(--about-teal) 100%
+        );
+        text-align: center;
+      }
+
+      .about-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 80% at 80% 20%,
+          rgba(41, 196, 216, 0.2) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .about-hero::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 98px;
+        background: var(--about-bg);
+        clip-path: ellipse(75% 100% at 50% 100%);
+      }
+
+      .about-hero__inner,
+      .about-wrap,
+      .about-cta-wrap {
+        width: min(1100px, calc(100vw - 48px));
+        margin: 0 auto;
+      }
+
+      .about-hero__inner {
+        position: relative;
+        z-index: 1;
+      }
+
+      .about-hero__pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font: 700 0.72rem/1 "DM Sans", sans-serif;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: aboutSlideUp 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) 0.08s forwards;
+      }
+
+      .about-hero__pill-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #dff7fb;
+        box-shadow: 0 0 8px #dff7fb;
+      }
+
+      .about-hero h1 {
+        max-width: 820px;
+        margin: 28px auto 20px;
+        font: 800 clamp(2.4rem, 5vw, 4rem) / 1.1 "Fraunces", serif;
+        letter-spacing: -0.03em;
+        color: #fff;
+        opacity: 0;
+        transform: translateY(16px);
+        animation: aboutSlideUp 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) 0.22s forwards;
+      }
+
+      .about-hero h1 .italic {
+        font-style: italic;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .about-hero p {
+        max-width: 600px;
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.8);
+        font: 400 1.05rem/1.7 "DM Sans", sans-serif;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: aboutSlideUp 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) 0.4s forwards;
+      }
+
+      .about-section {
+        padding: 96px 0 0;
+      }
+
+      .about-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+        color: var(--about-teal-dark);
+        font: 700 0.68rem/1 "DM Sans", sans-serif;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .about-eyebrow::before {
+        content: "";
+        width: 24px;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #39cbed, var(--about-teal));
+      }
+
+      .about-title {
+        margin: 0 0 16px;
+        color: var(--about-text);
+        font: 800 clamp(1.9rem, 3.2vw, 2.8rem) / 1.2 "Fraunces", serif;
+        letter-spacing: -0.025em;
+      }
+
+      .about-title .italic {
+        font-style: italic;
+        font-weight: 400;
+      }
+
+      .about-sub {
+        color: var(--about-muted);
+        font: 400 1rem/1.75 "DM Sans", sans-serif;
+      }
+
+      .about-story {
+        display: grid;
+        grid-template-columns: 1.12fr 0.88fr;
+        gap: 72px;
+        align-items: start;
+      }
+
+      .about-story__copy p {
+        margin: 0 0 18px;
+        color: var(--about-muted);
+        font: 400 1.02rem/1.85 "DM Sans", sans-serif;
+      }
+
+      .about-story__copy strong {
+        color: var(--about-text);
+        font-weight: 700;
+      }
+
+      .about-story__cards {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .about-card {
+        position: relative;
+        overflow: hidden;
+        padding: 30px 32px;
+        border: 1px solid var(--about-border);
+        border-radius: 18px;
+        background: #fff;
+        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1),
+          box-shadow 0.4s, border-color 0.3s;
+      }
+
+      .about-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #39cbed, var(--about-teal));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
+      }
+
+      .about-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(0, 176, 204, 0.12);
+        border-color: rgba(0, 176, 204, 0.28);
+      }
+
+      .about-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .about-card__label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: var(--about-surface);
+        color: var(--about-teal-dark);
+        font: 700 0.65rem/1 "DM Sans", sans-serif;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .about-card h3 {
+        margin: 0 0 10px;
+        color: var(--about-text);
+        font: 700 1.15rem/1.3 "Fraunces", serif;
+      }
+
+      .about-card p {
+        color: var(--about-muted);
+        font: 400 0.92rem/1.7 "DM Sans", sans-serif;
+      }
+
+      .about-approach__head,
+      .about-values__head {
+        max-width: 620px;
+        margin: 0 auto 72px;
+        text-align: center;
+      }
+
+      .about-approach__head .about-eyebrow,
+      .about-values__head .about-eyebrow {
+        justify-content: center;
+      }
+
+      .about-approach__head .about-eyebrow::before,
+      .about-values__head .about-eyebrow::before {
+        display: none;
+      }
+
+      .about-approach {
+        padding-top: 112px;
+      }
+
+      .about-timeline {
+        position: relative;
+        max-width: 780px;
+        margin: 0 auto;
+        padding-left: 100px;
+      }
+
+      .about-timeline__track {
+        position: absolute;
+        left: 33px;
+        top: 33px;
+        bottom: 33px;
+        width: 2px;
+        overflow: hidden;
+        background: var(--about-border);
+      }
+
+      .about-timeline__track::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--fill, 0%);
+        background: linear-gradient(180deg, #39cbed, var(--about-teal));
+        transition: height 0.25s ease-out;
+      }
+
+      .about-step {
+        position: relative;
+        margin-bottom: 18px;
+        padding: 22px 0;
+      }
+
+      .about-step:last-child {
+        margin-bottom: 0;
+      }
+
+      .about-step__num {
+        position: absolute;
+        top: 22px;
+        left: -100px;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 68px;
+        height: 68px;
+        border: 2px solid var(--about-border);
+        border-radius: 50%;
+        background: #fff;
+        color: #8fa3bf;
+        font: 800 0.95rem/1 "DM Sans", sans-serif;
+        box-shadow: 0 2px 12px rgba(10, 37, 64, 0.05);
+        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+      }
+
+      .about-step__num::before {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        z-index: -1;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #39cbed, var(--about-teal));
+        opacity: 0;
+        filter: blur(12px);
+        transition: opacity 0.35s;
+      }
+
+      .about-step.active .about-step__num,
+      .about-step:hover .about-step__num {
+        border-color: transparent;
+        background: linear-gradient(135deg, #39cbed, var(--about-teal));
+        color: #fff;
+        transform: scale(1.08);
+        box-shadow: 0 12px 28px rgba(0, 176, 204, 0.28);
+      }
+
+      .about-step.active .about-step__num::before,
+      .about-step:hover .about-step__num::before {
+        opacity: 0.5;
+      }
+
+      .about-step__card {
+        position: relative;
+        overflow: hidden;
+        padding: 26px 32px;
+        border: 1px solid var(--about-border);
+        border-radius: 16px;
+        background: #fff;
+        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1),
+          box-shadow 0.4s, border-color 0.3s;
+      }
+
+      .about-step__card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(180deg, #39cbed, var(--about-teal));
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
+      }
+
+      .about-step:hover .about-step__card {
+        transform: translateX(6px);
+        box-shadow: 0 12px 32px rgba(0, 176, 204, 0.12);
+        border-color: rgba(0, 176, 204, 0.28);
+      }
+
+      .about-step:hover .about-step__card::before,
+      .about-step.active .about-step__card::before {
+        transform: scaleY(1);
+      }
+
+      .about-step__card h3 {
+        margin: 0 0 8px;
+        color: var(--about-text);
+        font: 700 1.15rem/1.3 "Fraunces", serif;
+      }
+
+      .about-step__card p {
+        color: var(--about-muted);
+        font: 400 0.93rem/1.7 "DM Sans", sans-serif;
+      }
+
+      .about-values {
+        padding: 112px 0 56px;
+      }
+
+      .about-values__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .about-value {
+        position: relative;
+        overflow: hidden;
+        padding: 32px 28px;
+        border: 1px solid var(--about-border);
+        border-radius: 18px;
+        background: #fff;
+        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1),
+          box-shadow 0.4s, border-color 0.3s;
+      }
+
+      .about-value::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #39cbed, var(--about-teal));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
+      }
+
+      .about-value:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(0, 176, 204, 0.14);
+        border-color: rgba(0, 176, 204, 0.28);
+      }
+
+      .about-value:hover::before {
+        transform: scaleX(1);
+      }
+
+      .about-value__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        margin-bottom: 20px;
+        border-radius: 14px;
+        background: var(--about-surface);
+        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+      }
+
+      .about-value:hover .about-value__icon {
+        background: linear-gradient(135deg, #39cbed, var(--about-teal));
+        transform: rotate(-5deg) scale(1.08);
+      }
+
+      .about-value__icon svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: var(--about-teal-dark);
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: stroke 0.3s;
+      }
+
+      .about-value:hover .about-value__icon svg {
+        stroke: #fff;
+      }
+
+      .about-value h3 {
+        margin: 0 0 10px;
+        color: var(--about-text);
+        font: 700 1.08rem/1.3 "Fraunces", serif;
+      }
+
+      .about-value p {
+        color: var(--about-muted);
+        font: 400 0.88rem/1.7 "DM Sans", sans-serif;
+      }
+
+      .about-cta-wrap {
+        padding: 0 0 84px;
+      }
+
+      .about-cta {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 48px;
+        padding: 60px 64px;
+        border-radius: 24px;
+        background: linear-gradient(
+          135deg,
+          var(--about-cobalt) 0%,
+          #1a6fa8 50%,
+          var(--about-teal-dark) 100%
+        );
+        box-shadow: 0 24px 60px rgba(27, 79, 138, 0.22);
+      }
+
+      .about-cta__content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .about-cta h2 {
+        margin: 0 0 12px;
+        color: #fff;
+        font: 800 1.85rem/1.2 "Fraunces", serif;
+        letter-spacing: -0.02em;
+      }
+
+      .about-cta h2 .italic {
+        font-style: italic;
+        font-weight: 400;
+        color: #dff7fb;
+      }
+
+      .about-cta p {
+        max-width: 430px;
+        color: rgba(255, 255, 255, 0.78);
+        font: 400 0.95rem/1.65 "DM Sans", sans-serif;
+      }
+
+      .about-cta__buttons {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-width: 220px;
+        flex-shrink: 0;
+      }
+
+      .about-btn-solid,
+      .about-btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 28px;
+        border-radius: 999px;
+        font: 700 0.9rem/1 "DM Sans", sans-serif;
+        text-align: center;
+        transition: all 0.2s cubic-bezier(0.2, 0.9, 0.3, 1);
+      }
+
+      .about-btn-solid {
+        background: #fff;
+        color: var(--about-teal-dark);
+      }
+
+      .about-btn-solid:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+      }
+
+      .about-btn-solid svg {
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: var(--about-teal-dark);
+        stroke-width: 2.5;
+        transition: transform 0.2s;
+      }
+
+      .about-btn-solid:hover svg {
+        transform: translateX(3px);
+      }
+
+      .about-btn-ghost {
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        backdrop-filter: blur(10px);
+      }
+
+      .about-btn-ghost:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      .about-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1),
+          transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+      }
+
+      .about-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .about-reveal-stagger > * {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.3, 1),
+          transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
+      }
+
+      .about-reveal-stagger.is-visible > *:nth-child(1) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.05s;
+      }
+
+      .about-reveal-stagger.is-visible > *:nth-child(2) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.15s;
+      }
+
+      .about-reveal-stagger.is-visible > *:nth-child(3) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.25s;
+      }
+
+      .about-reveal-stagger.is-visible > *:nth-child(4) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.35s;
+      }
+
+      @keyframes aboutSlideUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .about-values__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .about-hero {
+          padding: 78px 0 126px;
+        }
+
+        .about-hero__inner,
+        .about-wrap,
+        .about-cta-wrap {
+          width: min(1100px, calc(100vw - 40px));
+        }
+
+        .about-section {
+          padding-top: 76px;
+        }
+
+        .about-story {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .about-approach {
+          padding-top: 88px;
+        }
+
+        .about-timeline {
+          padding-left: 76px;
+        }
+
+        .about-timeline__track {
+          left: 28px;
+        }
+
+        .about-step__num {
+          left: -76px;
+          width: 56px;
+          height: 56px;
+          font-size: 0.85rem;
+        }
+
+        .about-values {
+          padding: 88px 0 48px;
+        }
+
+        .about-values__grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-cta {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 40px 32px;
+        }
+
+        .about-cta__buttons {
+          width: 100%;
+          min-width: 0;
+        }
+      }
+    </style>
   </head>
-  <body>
+  <body class="about-page">
     <div class="page-shell">
       <header class="topbar">
         <a class="brand" href="./index.html" aria-label="Go to home">
           <div class="brand__logo" aria-label="Education Beyond Borders">
-            <img class="brand__logo-image" src="./logo.png" alt="Education Beyond Borders logo" />
+            <img
+              class="brand__logo-image"
+              src="./logo.png"
+              alt="Education Beyond Borders logo"
+            />
           </div>
         </a>
 
@@ -30,7 +739,9 @@
           <a href="./partnerships.html">Partnerships</a>
         </nav>
 
-        <a class="button button--primary button--small" href="./contact.html">Contact Us</a>
+        <a class="button button--primary button--small" href="./contact.html"
+          >Contact Us</a
+        >
 
         <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
           <span></span>
@@ -40,153 +751,325 @@
       </header>
 
       <main>
-        <section class="about-intro">
-          <div class="about-intro__content">
-            <div class="eyebrow">ABOUT US</div>
-            <h1>We align school realities with structured support.</h1>
+        <section class="about-hero">
+          <div class="about-hero__inner">
+            <div class="about-hero__pill">
+              <span class="about-hero__pill-dot"></span>
+              Our Story
+            </div>
+            <h1>
+              Education that actually reaches the students who
+              <span class="italic">need it most.</span>
+            </h1>
             <p>
-              Not goodwill. Not one-off drives. EBB builds partnerships that are practical, measurable, and designed to outlast the moment they were created.
+              EBB exists to close the gap between schools that need support and
+              the people, organisations, and communities ready to provide it
+              with programs built to last, not just look good on paper.
             </p>
           </div>
         </section>
 
-        <section class="story-showcase section">
-          <div class="story-showcase__grid">
-            <div class="story-showcase__copy">
-              <div class="eyebrow">OUR STORY</div>
-              <h2>Born from a gap that everyone could see and no one had closed.</h2>
-              <p>
-                Resources exist in the corporate world. Needs are acute in schools. The bridge connecting them has always been fragile â€” built on goodwill, not systems.
-              </p>
-              <p>
-                EBB was built to change that. We don't facilitate donations. We architect partnerships â€” matching CSR mandates to structural school needs so programs run properly, deliver real outcomes, and keep running after the launch event is over.
+        <section class="about-section">
+          <div class="about-wrap">
+            <div class="about-story">
+              <div class="about-story__copy about-reveal">
+                <div class="about-eyebrow">Our Story</div>
+                <h2 class="about-title">
+                  We started because too many good intentions were
+                  <span class="italic">going to waste.</span>
+                </h2>
+                <p>
+                  In classrooms across India, teachers were stretched thin and
+                  students were often left to figure out life's biggest
+                  questions on their own. How to speak up, manage money, handle
+                  stress, lead a team, and imagine a better future.
+                </p>
+                <p>
+                  At the same time, corporates, NGOs, and communities wanted to
+                  help, but
+                  <strong>
+                    the programs they funded often disappeared after the launch
+                    photo.
+                  </strong>
+                  The bridge between intent and actual implementation was always
+                  the problem.
+                </p>
+                <p>
+                  EBB was built to become that bridge. Not a broker, but a
+                  hands-on partner. We design the programs, train the educators,
+                  track the outcomes, and stay long enough to see what actually
+                  changes for students.
+                </p>
+              </div>
+
+              <div class="about-story__cards about-reveal-stagger">
+                <article class="about-card">
+                  <div class="about-card__label">Our Mission</div>
+                  <h3>
+                    To give every student access to the skills school was never
+                    designed to teach.
+                  </h3>
+                  <p>
+                    Confidence, communication, financial sense, emotional
+                    resilience, and the ability to imagine a different future.
+                    We build programs that reach students who would otherwise
+                    miss out entirely.
+                  </p>
+                </article>
+
+                <article class="about-card">
+                  <div class="about-card__label">Our Vision</div>
+                  <h3>
+                    A generation where your starting point doesn't set your
+                    ceiling.
+                  </h3>
+                  <p>
+                    Where the school you attend, the income your family earns,
+                    or the city you were born in no longer decides the
+                    trajectory of your life. Opportunity should be built in, not
+                    something students have to hope for.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="about-approach">
+          <div class="about-wrap">
+            <div class="about-approach__head about-reveal">
+              <div class="about-eyebrow">How We Work</div>
+              <h2 class="about-title">
+                Five steps, <span class="italic">every single time.</span>
+              </h2>
+              <p class="about-sub">
+                Good intentions are not enough. Every program we run follows the
+                same structured path so the work is practical, measurable, and
+                repeatable across schools and partnerships.
               </p>
             </div>
 
-            <div class="story-showcase__cards">
-              <article class="story-card story-card--blue">
-                <div class="story-card__icon" aria-hidden="true">
-                  <span></span>
+            <div class="about-timeline" id="aboutTimeline">
+              <div class="about-timeline__track" id="aboutTimelineTrack"></div>
+
+              <div class="about-step">
+                <div class="about-step__num">01</div>
+                <article class="about-step__card">
+                  <h3>We listen first.</h3>
+                  <p>
+                    Before anything else, we sit with school leadership,
+                    teachers, and students to understand the real gaps, not the
+                    ones that simply sound impressive in a proposal.
+                  </p>
+                </article>
+              </div>
+
+              <div class="about-step">
+                <div class="about-step__num">02</div>
+                <article class="about-step__card">
+                  <h3>We align the right partner.</h3>
+                  <p>
+                    We connect schools with CSR partners, NGOs, or communities
+                    whose goals, resources, and timelines genuinely fit the
+                    school's needs. A weak match helps no one.
+                  </p>
+                </article>
+              </div>
+
+              <div class="about-step">
+                <div class="about-step__num">03</div>
+                <article class="about-step__card">
+                  <h3>We design the programs.</h3>
+                  <p>
+                    Our curriculum is shaped with educators, psychologists, and
+                    subject experts. Every module is activity-based, grounded in
+                    what students actually respond to, and built around outcomes
+                    we can track.
+                  </p>
+                </article>
+              </div>
+
+              <div class="about-step">
+                <div class="about-step__num">04</div>
+                <article class="about-step__card">
+                  <h3>We show up in the classroom.</h3>
+                  <p>
+                    Our trained educators deliver sessions consistently,
+                    week after week. We monitor attendance, engagement, and
+                    learning progress as the program runs, not after it ends.
+                  </p>
+                </article>
+              </div>
+
+              <div class="about-step">
+                <div class="about-step__num">05</div>
+                <article class="about-step__card">
+                  <h3>We report honestly.</h3>
+                  <p>
+                    Schools see what changed for students. Partners see exactly
+                    where their support went. We share both wins and gaps
+                    because real impact cannot be told selectively.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="about-values">
+          <div class="about-wrap">
+            <div class="about-values__head about-reveal">
+              <div class="about-eyebrow">What Guides Us</div>
+              <h2 class="about-title">
+                The values we <span class="italic">actually use.</span>
+              </h2>
+              <p class="about-sub">
+                Not slogans on a wall. These are the standards we use when we
+                decide what to build, who to partner with, and where our work
+                should go next.
+              </p>
+            </div>
+
+            <div class="about-values__grid about-reveal-stagger">
+              <article class="about-value">
+                <div class="about-value__icon">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M9 12l2 2 4-4"></path>
+                  </svg>
                 </div>
-                <h3>Our Mission</h3>
+                <h3>Transparency</h3>
                 <p>
-                  To democratize quality education by creating scalable, accountable partnerships between schools and the organizations that want to meaningfully support them.
+                  Every session, every decision, and every outcome should be
+                  visible to the people trusting us with their time, money, and
+                  students.
                 </p>
               </article>
 
-              <article class="story-card story-card--cream">
-                <div class="story-card__icon story-card__icon--eye" aria-hidden="true">
-                  <span></span>
+              <article class="about-value">
+                <div class="about-value__icon">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="9" cy="8" r="3"></circle>
+                    <path d="M16 11c1.657 0 3-1.343 3-3s-1.343-3-3-3"></path>
+                    <path d="M3 20c0-3.314 2.686-6 6-6s6 2.686 6 6"></path>
+                    <path d="M16 14c3.314 0 6 2.686 6 6"></path>
+                  </svg>
                 </div>
-                <h3>Our Vision</h3>
+                <h3>Inclusivity</h3>
                 <p>
-                 A world where a student's access to opportunity is not an accident of geography or funding.
+                  We build for the students schools usually struggle to reach,
+                  not the ones already thriving. If a program only works for the
+                  top of the class, it is not enough.
+                </p>
+              </article>
+
+              <article class="about-value">
+                <div class="about-value__icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"></path>
+                  </svg>
+                </div>
+                <h3>Innovation</h3>
+                <p>
+                  Traditional systems were not built for these life-shaping
+                  skills, so we keep evolving how we teach, deliver, and measure
+                  what matters.
+                </p>
+              </article>
+
+              <article class="about-value">
+                <div class="about-value__icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3>Empathy</h3>
+                <p>
+                  Every student walks into the room with circumstances we may
+                  never fully see. Our responsibility is to meet them where they
+                  are, not where a system assumes they should be.
                 </p>
               </article>
             </div>
           </div>
         </section>
 
-        <section class="implementation section--soft">
-          <div class="implementation__header">
-            <div class="eyebrow">IMPLEMENTATION</div>
-            <h2>The 5-Step Approach</h2>
-            <p>
-             Good intentions without process produce nothing. Every EBB partnership follows a rigorous, repeatable methodology â€” from first assessment to final report.
-            </p>
-          </div>
-
-          <div class="implementation-timeline">
-            <div class="implementation-timeline__line" aria-hidden="true"></div>
-
-            <div class="implementation-step">
-              <div class="implementation-step__marker">01</div>
-              <article class="implementation-step__card">
-                <h3>Needs Assessment</h3>
-                <p>Structured evaluation of school infrastructure, curriculum gaps, student demographics, and institutional capacity. We start with evidence, not assumptions.</p>
-              </article>
+        <div class="about-cta-wrap">
+          <div class="about-cta about-reveal">
+            <div class="about-cta__content">
+              <h2>Want to build something <span class="italic">real?</span></h2>
+              <p>
+                Whether you run a school, manage CSR for a company, or simply
+                care about education that actually lands, there is a meaningful
+                way to work with us.
+              </p>
             </div>
-
-            <div class="implementation-step">
-              <div class="implementation-step__marker">02</div>
-              <article class="implementation-step__card">
-                <h3>Partner Alignment</h3>
-                <p>We align partners whose CSR objectives, timelines, and capabilities fit the school's real needs â€” not just whoever responds first.</p>
-              </article>
-            </div>
-
-            <div class="implementation-step">
-              <div class="implementation-step__marker">03</div>
-              <article class="implementation-step__card">
-                <h3>Program Design</h3>
-                <p>Co-created with school leadership and a vetted network of domain experts including child psychologists, aptitude specialists, and curriculum researchers with measurable outcomes built in from day one.</p>
-              </article>
-            </div>
-
-            <div class="implementation-step">
-              <div class="implementation-step__marker">04</div>
-              <article class="implementation-step__card">
-                <h3>Delivery & Monitoring</h3>
-                <p>In-classroom delivery by trained educators working directly with students in under-resourced schools. Attendance, engagement, and learning outcomes are tracked continuously — not reviewed after the fact.</p>
-              </article>
-            </div>
-
-            <div class="implementation-step">
-              <div class="implementation-step__marker">05</div>
-              <article class="implementation-step__card">
-                <h3>Impact Reporting</h3>
-                <p>Transparent, data-backed outcomes for every stakeholder. Schools see what changed. Partners see what their investment built. Students get proof of progress.</p>
-              </article>
+            <div class="about-cta__buttons">
+              <a href="./contact.html" class="about-btn-solid"
+                >Partner as a School
+                <svg viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
+              <a href="./contact.html" class="about-btn-ghost"
+                >Partner with CSR</a
+              >
             </div>
           </div>
-        </section>
-
-        <section class="core-values section">
-          <div class="section-heading section-heading--center">
-            <h1 class="core-values__eyebrow">What we stand for</h1>
-            <h2>Our Core Values</h2>
-            <p>
-              These aren't principles on a wall. They're the criteria we use to evaluate every decision, every partnership, and every program we run.
-            </p>
-          </div>
-
-          <div class="core-values__grid">
-            <article class="core-value">
-              <div class="core-value__icon">&#9825;</div>
-              <h3>Transparency</h3>
-              <p>We report clearly and completely â€” to schools, partners, and funders. Every program is accounted for. Accountability isn't optional, it's the product.</p>
-            </article>
-            <article class="core-value">
-              <div class="core-value__icon">&#9825;</div>
-              <h3>Inclusivity</h3>
-              <p>We design for students with the least access, not the most. Every program is built to reach learners regardless of income, language, or location.</p>
-            </article>
-            <article class="core-value">
-              <div class="core-value__icon">&#9825;</div>
-              <h3>Innovation</h3>
-              <p>We evolve how partnerships are built â€” moving beyond CSR checkboxes toward programs with measurable, lasting educational impact.</p>
-            </article>
-            <article class="core-value">
-              <div class="core-value__icon">&#9825;</div>
-              <h3>Empathy</h3>
-              <p>The student is not a metric. Every program is designed with a clear understanding of what it actually means to learn in an under-resourced environment.</p>
-            </article>
-          </div>
-        </section>
+        </div>
       </main>
 
-      <footer class="footer">
+      <footer class="footer" id="contact">
         <div class="footer__grid">
           <div>
             <div class="brand brand--footer">
-              <div class="brand__logo brand__logo--footer" aria-label="Education Beyond Borders">
-                <img class="brand__logo-image brand__logo-image--footer" src="./logo.png" alt="Education Beyond Borders logo" />
+              <div
+                class="brand__logo brand__logo--footer"
+                aria-label="Education Beyond Borders"
+              >
+                <img
+                  class="brand__logo-image brand__logo-image--footer"
+                  src="./logo.png"
+                  alt="Education Beyond Borders logo"
+                />
               </div>
             </div>
             <p class="footer__copy">
-              Empowering communities through skill development, school partnerships, and
-              impact-driven educational programs.
+              Empowering communities through skill development, school
+              partnerships, and impact-driven educational programs.
             </p>
+            <div class="socials" aria-label="Social links">
+              <a href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M13 22v-8h3l1-4h-4V8c0-1.15.39-2 2-2h2V2.5A21.4 21.4 0 0 0 14 2c-3 0-5 1.79-5 5v3H6v4h3v8Z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Twitter">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 5.92a8.36 8.36 0 0 1-2.36.64A4.1 4.1 0 0 0 21.45 4a8.18 8.18 0 0 1-2.6 1A4.07 4.07 0 0 0 12 7.87a11.55 11.55 0 0 1-8.38-4.25 4.07 4.07 0 0 0 1.26 5.43A4 4 0 0 1 3 8.49v.05a4.08 4.08 0 0 0 3.27 4 4.1 4.1 0 0 1-1.83.07 4.08 4.08 0 0 0 3.8 2.83A8.18 8.18 0 0 1 2 17.54 11.53 11.53 0 0 0 8.29 19.4c7.55 0 11.67-6.25 11.67-11.66 0-.18 0-.36-.01-.53A8.26 8.26 0 0 0 22 5.92Z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.38a1.13 1.13 0 1 1-1.13 1.13 1.13 1.13 0 0 1 1.13-1.13Z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M6.94 8.5H3.56V20h3.38ZM5.25 3A1.95 1.95 0 1 0 7.2 4.95 1.95 1.95 0 0 0 5.25 3Zm15.19 8.2c0-3.02-1.61-4.43-3.76-4.43a3.24 3.24 0 0 0-2.93 1.61V8.5h-3.24c.04.63 0 11.5 0 11.5h3.24v-6.42a2.14 2.14 0 0 1 .1-.77 2.12 2.12 0 0 1 1.98-1.42c1.39 0 1.95 1.06 1.95 2.62V20H21s.04-5.55.04-8.8Z"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
 
           <div class="footer__links">
@@ -207,7 +1090,10 @@
           <div class="footer__contact">
             <div class="footer__contact-item">
               <img src="./icons/location.svg" alt="" aria-hidden="true" />
-              <span>40C, Green View Apartments, Sector-15A, Noida, Uttar Pradesh-201301</span>
+              <span
+                >40C, Green View Apartments, Sector-15A, Noida, Uttar
+                Pradesh-201301</span
+              >
             </div>
             <div class="footer__contact-item">
               <img src="./icons/phone.svg" alt="" aria-hidden="true" />
@@ -219,9 +1105,67 @@
             </div>
           </div>
         </div>
+
+        <div class="footer__bottom">
+          <span
+            >&copy; 2026 Education Beyond Borders. All rights reserved.</span
+          >
+          <div class="footer__bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
       </footer>
     </div>
 
     <script src="./script.js"></script>
+    <script>
+      const aboutRevealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              aboutRevealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+      );
+
+      document
+        .querySelectorAll(".about-reveal, .about-reveal-stagger")
+        .forEach((element) => aboutRevealObserver.observe(element));
+
+      const aboutTimeline = document.getElementById("aboutTimeline");
+      const aboutTimelineTrack = document.getElementById("aboutTimelineTrack");
+      const aboutSteps = Array.from(document.querySelectorAll(".about-step"));
+
+      const updateAboutTimeline = () => {
+        if (!aboutTimeline || !aboutTimelineTrack) {
+          return;
+        }
+
+        const rect = aboutTimeline.getBoundingClientRect();
+        const viewportMid = window.innerHeight * 0.55;
+        let progress = (viewportMid - rect.top) / rect.height;
+        progress = Math.max(0, Math.min(1, progress));
+        aboutTimelineTrack.style.setProperty("--fill", `${progress * 100}%`);
+
+        aboutSteps.forEach((step) => {
+          const numRect = step
+            .querySelector(".about-step__num")
+            .getBoundingClientRect();
+          if (numRect.top + numRect.height / 2 <= viewportMid) {
+            step.classList.add("active");
+          } else {
+            step.classList.remove("active");
+          }
+        });
+      };
+
+      window.addEventListener("scroll", updateAboutTimeline, { passive: true });
+      window.addEventListener("resize", updateAboutTimeline);
+      updateAboutTimeline();
+    </script>
   </body>
 </html>
