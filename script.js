@@ -19,7 +19,7 @@ window.addEventListener("load", () => {
 
   setTimeout(() => {
     introLoader.classList.add("is-hidden");
-  }, 1400);
+  }, 750);
 });
 
 menuToggle?.addEventListener("click", () => {

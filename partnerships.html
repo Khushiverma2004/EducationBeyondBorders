@@ -81,7 +81,7 @@
       align-items: center;
       margin-left: auto;
       gap: clamp(22px, 1.55vw, 30px);
-      font-family: "Manrope", "DM Sans", sans-serif;
+      font-family: "DM Sans", "Manrope", sans-serif;
       font-size: clamp(1rem, 1.15vw, 1.35rem);
       font-weight: 700;
       color: #40516a;
@@ -89,6 +89,7 @@
     .nav a {
       position: relative;
       padding: 11px 0 14px;
+      font-weight: 700;
       transition: color 0.25s ease, transform 0.25s ease;
     }
     .nav a::after {
@@ -106,7 +107,7 @@
     }
     .nav a:hover,
     .nav a:focus-visible,
-    .nav a.is-active { color: #1b4f8a; }
+    .nav a.is-active { color: #0d2b3e; }
     .nav a:hover::after,
     .nav a:focus-visible::after,
     .nav a.is-active::after { transform: scaleX(1); }
@@ -374,6 +375,8 @@
       background-clip: text;
     }
     .section-sub { max-width: 600px; color: var(--sub); font-size: 1rem; line-height: 1.75; }
+    .section-sub a { color: var(--teal-dark); font-weight: 700; text-decoration: none; }
+    .section-sub a:hover { text-decoration: underline; }
 
     .intro { padding: 88px 0 32px; }
     .intro-head { max-width: 720px; margin: 0 auto; text-align: center; }
@@ -494,6 +497,123 @@
     }
     .ptype-cta svg, .btn-primary svg { width: 18px; height: 18px; }
     .ptype-cta:hover, .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0, 180, 204, 0.32); }
+
+    .partner-logo-marquee {
+      position: relative;
+      overflow: hidden;
+      width: calc(100vw - 48px);
+      margin: 44px 0 0 50%;
+      padding: 40px 0;
+      border: 1px solid rgba(0, 176, 204, 0.12);
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(57, 203, 237, 0.16), transparent 28%),
+        radial-gradient(circle at 82% 70%, rgba(27, 79, 138, 0.1), transparent 30%),
+        linear-gradient(135deg, #f5fbfc 0%, #e8f7fa 100%);
+      box-shadow: 0 22px 62px rgba(10, 37, 64, 0.1);
+      transform: translateX(-50%);
+    }
+    .partner-logo-marquee::before,
+    .partner-logo-marquee::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 2;
+      width: 130px;
+      pointer-events: none;
+    }
+    .partner-logo-marquee::before {
+      left: 0;
+      background: linear-gradient(90deg, #f5fbfc, rgba(245, 251, 252, 0));
+    }
+    .partner-logo-marquee::after {
+      right: 0;
+      background: linear-gradient(270deg, #f5fbfc, rgba(245, 251, 252, 0));
+    }
+    .partner-logo-rows {
+      display: grid;
+      gap: 28px;
+    }
+    .partner-logo-row {
+      overflow: hidden;
+    }
+    .partner-logo-track {
+      display: flex;
+      width: max-content;
+      gap: 34px;
+      animation: logoSlideLeft 34s linear infinite;
+    }
+    .partner-logo-row--reverse .partner-logo-track {
+      animation-name: logoSlideRight;
+      animation-duration: 38s;
+      transform: translateX(-50%);
+    }
+    .partner-logo-marquee:hover .partner-logo-track {
+      animation-play-state: paused;
+    }
+    .partner-logo-set {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      padding-left: 34px;
+    }
+    .partner-logo-card {
+      display: grid;
+      place-items: center;
+      flex: 0 0 280px;
+      height: 150px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      animation: logoFloat 4.8s ease-in-out infinite;
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+    .partner-logo-card:nth-child(2n) {
+      animation-delay: -1.2s;
+    }
+    .partner-logo-card:nth-child(3n) {
+      animation-delay: -2.3s;
+    }
+    .partner-logo-card:hover {
+      transform: translateY(-6px) scale(1.06);
+      filter: drop-shadow(0 14px 20px rgba(13, 43, 62, 0.14));
+    }
+    .partner-logo-card img {
+      display: block;
+      max-width: 100%;
+      max-height: 118px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      filter: contrast(1.08) saturate(1.05);
+    }
+    .partner-logo-card--wide {
+      flex-basis: 430px;
+    }
+    .partner-logo-card--wide img {
+      max-height: 108px;
+    }
+    @keyframes logoSlideLeft {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+    @keyframes logoSlideRight {
+      to {
+        transform: translateX(0);
+      }
+    }
+    @keyframes logoFloat {
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-5px) scale(1.025);
+      }
+    }
 
     .process { margin-top: 48px; padding: 72px 0 48px; background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.54), transparent); }
     .process-head, .principles-head, .faq-head { max-width: 720px; margin: 0 auto 44px; text-align: center; }
@@ -674,6 +794,8 @@
     .faq-q-icon svg { width: 16px; height: 16px; }
     .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.28s ease; }
     .faq-a-inner { padding: 0 22px 22px; color: var(--sub); font-size: 0.95rem; line-height: 1.7; }
+    .faq-a-inner a { color: var(--teal-dark); font-weight: 700; text-decoration: none; }
+    .faq-a-inner a:hover { text-decoration: underline; }
     .faq-item.open .faq-a { max-height: 420px; }
     .faq-item.open .faq-q-icon { transform: rotate(180deg); }
 
@@ -702,6 +824,7 @@
     .btn-outline:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.16); }
 
     .footer {
+      margin-top: 26px;
       padding: 64px clamp(20px, 5vw, 54px) 26px;
       color: rgba(255, 255, 255, 0.78);
       background:
@@ -712,7 +835,7 @@
       display: grid;
       grid-template-columns: 1.25fr 0.72fr 0.72fr 1.05fr;
       gap: 44px;
-      max-width: 1160px;
+      max-width: 1480px;
       margin: 0 auto 40px;
     }
     .brand--footer { display: inline-flex; align-items: center; margin-bottom: 18px; }
@@ -747,11 +870,13 @@
     .footer__contact { display: grid; align-content: start; gap: 16px; }
     .footer__contact-item { display: flex; align-items: flex-start; gap: 12px; color: rgba(255, 255, 255, 0.72); line-height: 1.55; }
     .footer__contact-item img { width: 18px; height: 18px; margin-top: 2px; filter: brightness(0) invert(1); opacity: 0.78; }
+    .footer__contact-item a { color: rgba(255, 255, 255, 0.72); text-decoration: none; }
+    .footer__contact-item a:hover { color: #39cbed; }
     .footer__bottom {
       display: flex;
       justify-content: space-between;
       gap: 20px;
-      max-width: 1160px;
+      max-width: 1480px;
       margin: 0 auto;
       padding-top: 24px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -802,6 +927,34 @@
       .hero-feature img { height: 310px; }
       .intro { padding-top: 64px; }
       .ptype { padding: 42px 0; }
+      .partner-logo-marquee {
+        width: calc(100vw - 28px);
+        margin-top: 24px;
+        border-radius: 16px;
+        padding: 26px 0;
+      }
+      .partner-logo-marquee::before,
+      .partner-logo-marquee::after {
+        width: 44px;
+      }
+      .partner-logo-track,
+      .partner-logo-set {
+        gap: 20px;
+      }
+      .partner-logo-rows {
+        gap: 20px;
+      }
+      .partner-logo-card {
+        flex-basis: 210px;
+        height: 112px;
+        padding: 8px 12px;
+      }
+      .partner-logo-card--wide {
+        flex-basis: 290px;
+      }
+      .partner-logo-card img {
+        max-height: 86px;
+      }
       .process-grid, .impact-band-grid, .ft { grid-template-columns: 1fr; }
       .impact-band { padding: 34px 24px; }
       .cta-wrap { padding: 0 24px 72px; }
@@ -812,6 +965,13 @@
       .footer__bottom-links { flex-wrap: wrap; }
     }
     @media (prefers-reduced-motion: reduce) {
+      .partner-logo-track {
+        animation: none;
+        transform: none;
+      }
+      .partner-logo-marquee {
+        overflow-x: auto;
+      }
       *, *::before, *::after {
         animation-duration: 0.001ms !important;
         animation-iteration-count: 1 !important;
@@ -825,7 +985,7 @@
   <header class="topbar">
     <a class="brand" href="./index.html" aria-label="Go to home">
       <div class="brand__logo" aria-label="Education Beyond Borders">
-        <img class="brand__logo-image" src="./logo.png" alt="Education Beyond Borders logo" />
+        <img class="brand__logo-image" src="./icons/logo.png" alt="Education Beyond Borders logo" />
       </div>
     </a>
     <nav class="nav" aria-label="Main navigation">
@@ -834,6 +994,7 @@
       <a href="./programs.html">Our Programs</a>
       <a href="./report.html">Impact Report</a>
       <a class="is-active" href="./partnerships.html">Partnerships</a>
+      <a href="./career.html">Careers</a>
       <a href="./gallery.html">Gallery</a>
     </nav>
     <a class="button button--primary button--small" href="./contact.html">Contact Us</a>
@@ -967,6 +1128,46 @@
           <a href="contact.html" class="ptype-cta">Become a contributor <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
+      <div class="partner-logo-marquee" aria-label="Partner and contributor logos">
+        <div class="partner-logo-rows">
+          <div class="partner-logo-row">
+            <div class="partner-logo-track">
+              <div class="partner-logo-set">
+                <div class="partner-logo-card"><img src="./logos/Ace Hardware.jpeg" alt="Ace Hardware" /></div>
+                <div class="partner-logo-card"><img src="./logos/Chetram Sharma Girls Inter College.png" alt="Chetram Sharma Girls Inter College" /></div>
+                <div class="partner-logo-card partner-logo-card--wide"><img src="./logos/Gyan SHakti Vidyalaya.png" alt="Gyan Shakti Vidyalaya" /></div>
+                <div class="partner-logo-card"><img src="./logos/KCS Inter College.png" alt="K.C.S. Inter College" /></div>
+                <div class="partner-logo-card"><img src="./logos/SGSM High School, Dujana.jpeg" alt="S.G.S.M. High School Dujana" /></div>
+              </div>
+              <div class="partner-logo-set" aria-hidden="true">
+                <div class="partner-logo-card"><img src="./logos/Ace Hardware.jpeg" alt="" /></div>
+                <div class="partner-logo-card"><img src="./logos/Chetram Sharma Girls Inter College.png" alt="" /></div>
+                <div class="partner-logo-card partner-logo-card--wide"><img src="./logos/Gyan SHakti Vidyalaya.png" alt="" /></div>
+                <div class="partner-logo-card"><img src="./logos/KCS Inter College.png" alt="" /></div>
+                <div class="partner-logo-card"><img src="./logos/SGSM High School, Dujana.jpeg" alt="" /></div>
+              </div>
+            </div>
+          </div>
+          <div class="partner-logo-row partner-logo-row--reverse">
+            <div class="partner-logo-track">
+              <div class="partner-logo-set">
+                <div class="partner-logo-card"><img src="./logos/Shaheed Bhagat Singh Inter College, Roza Jalalpur.png" alt="Shaheed Bhagat Singh Inter College Roza Jalalpur" /></div>
+                <div class="partner-logo-card partner-logo-card--wide"><img src="./logos/sopra.png" alt="Sopra Steria" /></div>
+                <div class="partner-logo-card partner-logo-card--wide"><img src="./logos/SRM Public School Logo.jpg" alt="SRM Public School Noida" /></div>
+                <div class="partner-logo-card partner-logo-card--wide"><img src="./logos/Udaar Foundation Logo.png" alt="Udaar Foundation" /></div>
+                <div class="partner-logo-card partner-logo-card--wide"><img src="./logos/VTTW-Color.png" alt="Volunteer To The World" /></div>
+              </div>
+              <div class="partner-logo-set" aria-hidden="true">
+                <div class="partner-logo-card"><img src="./logos/Shaheed Bhagat Singh Inter College, Roza Jalalpur.png" alt="" /></div>
+                <div class="partner-logo-card partner-logo-card--wide"><img src="./logos/sopra.png" alt="" /></div>
+                <div class="partner-logo-card partner-logo-card--wide"><img src="./logos/SRM Public School Logo.jpg" alt="" /></div>
+                <div class="partner-logo-card partner-logo-card--wide"><img src="./logos/Udaar Foundation Logo.png" alt="" /></div>
+                <div class="partner-logo-card partner-logo-card--wide"><img src="./logos/VTTW-Color.png" alt="" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1054,7 +1255,7 @@
       <div class="faq-head reveal">
         <div class="section-eyebrow">Common Questions</div>
         <h2 class="section-title">The things partners <span class="italic">usually ask first.</span></h2>
-        <p class="section-sub">If your question is not answered here, just email us. We will come back within a working day.</p>
+        <p class="section-sub">If your question is not answered here, just <a href="mailto:connect@ebbindia.com">email us</a>. We will come back within a working day.</p>
       </div>
       <div class="faq-list reveal">
         <div class="faq-item"><button class="faq-q"><span>Is EBB an NGO?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">No. EBB is a private organisation, not a registered NGO. This means contributions to EBB from individuals do not qualify for 80G tax deduction. For CSR partners looking for Schedule VII compliant routing, we can structure partnerships through NGO collaborators where needed.</div></div></div>
@@ -1087,23 +1288,18 @@
       <div>
         <div class="brand brand--footer">
           <div class="brand__logo brand__logo--footer" aria-label="Education Beyond Borders">
-            <img class="brand__logo-image brand__logo-image--footer" src="./logo.png" alt="Education Beyond Borders logo" />
+            <img class="brand__logo-image brand__logo-image--footer" src="./icons/logo.png" alt="Education Beyond Borders logo" />
           </div>
         </div>
         <p class="footer__copy">
           Empowering communities through skill development, school partnerships, and impact-driven educational programs.
         </p>
         <div class="socials" aria-label="Social links">
-          <a href="https://www.facebook.com/ebbindia" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M13 22v-8h3l1-4h-4V8c0-1.15.39-2 2-2h2V2.5A21.4 21.4 0 0 0 14 2c-3 0-5 1.79-5 5v3H6v4h3v8Z" /></svg>
-          </a>
-          <a href="https://x.com/ebbindia" aria-label="Twitter">
-            <svg viewBox="0 0 24 24"><path d="M22 5.92a8.36 8.36 0 0 1-2.36.64A4.1 4.1 0 0 0 21.45 4a8.18 8.18 0 0 1-2.6 1A4.07 4.07 0 0 0 12 7.87a11.55 11.55 0 0 1-8.38-4.25 4.07 4.07 0 0 0 1.26 5.43A4 4 0 0 1 3 8.49v.05a4.08 4.08 0 0 0 3.27 4 4.1 4.1 0 0 1-1.83.07 4.08 4.08 0 0 0 3.8 2.83A8.18 8.18 0 0 1 2 17.54 11.53 11.53 0 0 0 8.29 19.4c7.55 0 11.67-6.25 11.67-11.66 0-.18 0-.36-.01-.53A8.26 8.26 0 0 0 22 5.92Z" /></svg>
-          </a>
-          <a href="https://www.instagram.com/ebbindia" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.38a1.13 1.13 0 1 1-1.13 1.13 1.13 1.13 0 0 1 1.13-1.13Z" /></svg>
-          </a>
-          <a href="https://www.linkedin.com/company/ebbindia" aria-label="LinkedIn">
+
+              <a aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-8h3l1-4h-4V8c0-1.15.39-2 2-2h2V2.5A21.4 21.4 0 0 0 14 2c-3 0-5 1.79-5 5v3H6v4h3v8Z" /></svg></a>
+              <a aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M22 5.92a8.36 8.36 0 0 1-2.36.64A4.1 4.1 0 0 0 21.45 4a8.18 8.18 0 0 1-2.6 1A4.07 4.07 0 0 0 12 7.87a11.55 11.55 0 0 1-8.38-4.25 4.07 4.07 0 0 0 1.26 5.43A4 4 0 0 1 3 8.49v.05a4.08 4.08 0 0 0 3.27 4 4.1 4.1 0 0 1-1.83.07 4.08 4.08 0 0 0 3.8 2.83A8.18 8.18 0 0 1 2 17.54 11.53 11.53 0 0 0 8.29 19.4c7.55 0 11.67-6.25 11.67-11.66 0-.18 0-.36-.01-.53A8.26 8.26 0 0 0 22 5.92Z" /></svg></a>
+              <a aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.38a1.13 1.13 0 1 1-1.13 1.13 1.13 1.13 0 0 1 1.13-1.13Z" /></svg></a>
+              <a href="https://www.linkedin.com/company/educationbeyondborders/" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38ZM5.25 3A1.95 1.95 0 1 0 7.2 4.95 1.95 1.95 0 0 0 5.25 3Zm15.19 8.2c0-3.02-1.61-4.43-3.76-4.43a3.24 3.24 0 0 0-2.93 1.61V8.5h-3.24c.04.63 0 11.5 0 11.5h3.24v-6.42a2.14 2.14 0 0 1 .1-.77 2.12 2.12 0 0 1 1.98-1.42c1.39 0 1.95 1.06 1.95 2.62V20H21s.04-5.55.04-8.8Z" /></svg>
           </a>
         </div>
@@ -1114,8 +1310,8 @@
         <a href="./programs.html">Our Programs</a>
         <a href="./report.html">Impact Report</a>
         <a href="./partnerships.html">Partnerships</a>
-        <a href="./career.html">Career</a>
-        <a href="./gallery.html">Gallery</a>
+          <a href="./career.html">Careers</a>
+          <a href="./gallery.html">Gallery</a>
       </div>
 
       <div class="footer__links">
@@ -1133,7 +1329,7 @@
         </div>
         <div class="footer__contact-item">
           <img src="./icons/email.svg" alt="" aria-hidden="true" />
-          <span>connect@ebbindia.com</span>
+          <a href="mailto:connect@ebbindia.com">connect@ebbindia.com</a>
         </div>
       </div>
     </div>
