@@ -1,116 +1,1173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Partnerships | Education Beyond Borders</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="topbar">
-        <a class="brand" href="./index.html" aria-label="Go to home">
-          <div class="brand__logo" aria-label="Education Beyond Borders">
-            <img class="brand__logo-image" src="./logo.png" alt="Education Beyond Borders logo" />
-          </div>
-        </a>
-        <nav class="nav" aria-label="Main navigation">
-          <a href="./index.html">Home</a>
-          <a href="./about.html">About Us</a>
-          <a href="./programs.html">Programs</a>
-          <a href="./report.html">Impact Report</a>
-          <a href="./blog.html">Blog</a>
-          <a href="./gallery.html">Gallery</a>
-          <a class="is-active" href="./partnerships.html">Partnerships</a>
-        </nav>
-        <a class="button button--primary button--small" href="./contact.html">Contact Us</a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partner With Us | Education Beyond Borders</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --teal: #00b4cc;
+      --teal-dark: #0090a8;
+      --aqua: #39cbed;
+      --royal: #1b4f8a;
+      --midnight: #0d2b3e;
+      --mist: #e0f7fa;
+      --cloud: #eef8fa;
+      --ink: #0d2b3e;
+      --sub: #4b7080;
+      --muted: #8fa3bf;
+      --white: #ffffff;
+      --border: rgba(0, 176, 204, 0.16);
+      --bg: #f5fbfc;
+    }
+    body {
+      overflow-x: hidden;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "DM Sans", "Manrope", "Inter", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      padding-top: 106px;
+    }
+    a { color: inherit; text-decoration: none; }
+    svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-      <main>
-        <section class="subpage-hero">
-          <div class="subpage-hero__content">
-            <div class="eyebrow">PARTNERSHIPS</div>
-            <h1>Collaborative models for schools, CSR teams, and local communities.</h1>
-            <p>
-              We design partnerships that are practical to run, transparent to measure, and strong
-              enough to create long-term student benefit.
-            </p>
-          </div>
-        </section>
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: none;
+      z-index: 20;
+      width: 100%;
+      min-height: 106px;
+      padding: 0 max(36px, calc((100vw - 1830px) / 2));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 34px;
+      background: #fff;
+      border-bottom: 1px solid rgba(24, 60, 107, 0.04);
+      box-shadow: 0 12px 28px rgba(18, 44, 79, 0.035);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      gap: 12px;
+    }
+    .brand__logo {
+      display: flex;
+      align-items: center;
+      width: clamp(190px, 14vw, 270px);
+    }
+    .brand__logo-image {
+      width: clamp(190px, 14vw, 270px);
+      height: auto;
+      object-fit: contain;
+      transform-origin: center;
+      transition: transform 0.35s ease, filter 0.35s ease;
+    }
+    .brand:hover .brand__logo-image,
+    .brand:focus-visible .brand__logo-image {
+      transform: translateY(-2px) scale(1.035);
+      filter: drop-shadow(0 12px 18px rgba(0, 180, 204, 0.2));
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      gap: clamp(22px, 1.55vw, 30px);
+      font-family: "Manrope", "DM Sans", sans-serif;
+      font-size: clamp(1rem, 1.15vw, 1.35rem);
+      font-weight: 700;
+      color: #40516a;
+    }
+    .nav a {
+      position: relative;
+      padding: 11px 0 14px;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      transform: scaleX(0);
+      transform-origin: left;
+      border-radius: 999px;
+      background: #00b4cc;
+      transition: transform 0.25s ease;
+    }
+    .nav a:hover,
+    .nav a:focus-visible,
+    .nav a.is-active { color: #1b4f8a; }
+    .nav a:hover::after,
+    .nav a:focus-visible::after,
+    .nav a.is-active::after { transform: scaleX(1); }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-family: "Manrope", "DM Sans", sans-serif;
+      font-weight: 700;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+    .button--small {
+      min-width: clamp(150px, 10vw, 210px);
+      min-height: 58px;
+      padding: 0 28px;
+      font-size: clamp(1rem, 1vw, 1.25rem);
+    }
+    .button:hover,
+    .button:focus-visible { transform: translateY(-2px); }
+    .button--primary {
+      color: #fff;
+      background: linear-gradient(135deg, #39cbed 0%, #00b4cc 100%);
+      box-shadow: 0 18px 35px rgba(0, 180, 204, 0.28);
+    }
+    .button--primary:hover,
+    .button--primary:focus-visible { background: linear-gradient(135deg, #39cbed 0%, #0090a8 100%); }
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border: 1px solid rgba(24, 60, 107, 0.1);
+      border-radius: 14px;
+      background: #fff;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin: 5px auto;
+      background: var(--midnight);
+    }
 
-        <section class="subpage-grid section">
-          <article class="card">
-            <h3>For CSR Teams</h3>
-            <p>End-to-end execution, student-level reporting, and visible social impact outcomes.</p>
-          </article>
-          <article class="card">
-            <h3>For Schools</h3>
-            <p>Structured support that fits the school calendar and complements existing teaching.</p>
-          </article>
-          <article class="card">
-            <h3>For Communities</h3>
-            <p>Programs shaped around access, trust, consistency, and real educational relevance.</p>
-          </article>
-        </section>
-      </main>
+    .partnership-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 88px 52px 140px;
+      text-align: center;
+      background: linear-gradient(160deg, var(--royal) 0%, var(--teal-dark) 58%, var(--teal) 100%);
+    }
+    .partnership-hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 100px;
+      background: var(--bg);
+      clip-path: ellipse(75% 100% at 50% 100%);
+    }
+    .partnership-hero-inner { position: relative; z-index: 2; display: block; max-width: 900px; margin: 0 auto; }
+    .partnership-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      padding: 6px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 100px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      transform: translateY(12px);
+      animation: slideUp 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) 0.1s forwards;
+    }
+    .led, .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mist);
+      box-shadow: 0 0 8px var(--mist);
+    }
+    .partnership-hero h1 {
+      margin-bottom: 22px;
+      color: #fff;
+      font-size: clamp(2.2rem, 4.8vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: slideUp 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) 0.25s forwards;
+    }
+    .italic { font-style: italic; font-weight: 400; }
+    .partnership-hero h1 .italic { display: inline; color: rgba(255, 255, 255, 0.92); }
+    .partnership-hero p {
+      max-width: 620px;
+      margin: 0 auto 36px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.1rem;
+      line-height: 1.65;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: slideUp 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) 0.45s forwards;
+    }
+    .hero-jump {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: slideUp 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) 0.65s forwards;
+    }
+    .jump-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 100px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 0.85rem;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+      transition: all 0.2s ease;
+    }
+    .jump-btn:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.22); }
+    .jump-btn .dot, .cap-partner .dot, .ptype-badge .dot, .principle-label .dot { background: var(--teal); box-shadow: none; }
+    @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(0.35deg); }
+    }
+    @keyframes softPulse {
+      0%, 100% { box-shadow: 0 30px 80px rgba(10, 37, 64, 0.3); }
+      50% { box-shadow: 0 34px 92px rgba(0, 180, 204, 0.28); }
+    }
+    @keyframes shineSweep {
+      from { transform: translateX(-130%) skewX(-18deg); }
+      to { transform: translateX(145%) skewX(-18deg); }
+    }
 
-      <footer class="footer">
-        <div class="footer__grid">
-          <div>
-            <div class="brand brand--footer">
-              <div class="brand__logo brand__logo--footer" aria-label="Education Beyond Borders">
-                <img class="brand__logo-image brand__logo-image--footer" src="./logo.png" alt="Education Beyond Borders logo" />
-              </div>
-            </div>
-            <p class="footer__copy">
-              Empowering communities through skill development, school partnerships, and
-              impact-driven educational programs.
-            </p>
-          </div>
+    .hero-feature-wrap {
+      position: relative;
+      z-index: 3;
+      max-width: 1100px;
+      margin: -80px auto 0;
+      padding: 0 52px;
+    }
+    .hero-feature {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      border: 4px solid #fff;
+      border-radius: 20px;
+      box-shadow: 0 30px 80px rgba(10, 37, 64, 0.3);
+      animation: heroFloat 7s ease-in-out infinite, softPulse 6s ease-in-out infinite;
+    }
+    .hero-feature img, .ptype-img img, .proof-img img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-feature::after, .ptype-img::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to top, rgba(10, 37, 64, 0.35), transparent 55%);
+    }
+    .hero-feature::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: -20%;
+      bottom: -20%;
+      width: 90px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+      animation: shineSweep 5.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero-feature-caption {
+      position: absolute;
+      z-index: 2;
+      left: 28px;
+      right: 28px;
+      bottom: 24px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      color: #fff;
+    }
+    .cap-text {
+      max-width: 420px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1.5;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+    .cap-partner {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      gap: 8px;
+      padding: 6px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.18);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
 
-          <div class="footer__links">
-            <a href="./about.html">About Us</a>
-            <a href="./programs.html">Our Programs</a>
-            <a href="./report.html">Impact Report</a>
-            <a href="./blog.html">Blog</a>
-            <a href="./gallery.html">Gallery</a>
-            <a href="./partnerships.html">Partnerships</a>
-          </div>
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1); }
+    .reveal-stagger.in > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.in > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.in > *:nth-child(3) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.in > *:nth-child(4) { transition-delay: 0.35s; opacity: 1; transform: translateY(0); }
 
-          <div class="footer__links">
-            <a href="./contact.html">Partner with CSR</a>
-            <a href="./contact.html">Partner with Schools</a>
-            <a href="./contact.html">Become a Partner</a>
-          </div>
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 52px; }
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      color: var(--teal-dark);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .section-eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--aqua), var(--teal));
+    }
+    .section-title {
+      margin-bottom: 16px;
+      color: var(--ink);
+      font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+    .section-title .italic, .ptype-content h2 .italic, .cta-inner h2 .italic, .impact-band h2 .italic {
+      color: transparent;
+      background: linear-gradient(90deg, var(--teal-dark), var(--aqua));
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .section-sub { max-width: 600px; color: var(--sub); font-size: 1rem; line-height: 1.75; }
 
-        <div class="footer__contact">
-          <div class="footer__contact-item">
-            <img src="./icons/location.svg" alt="" aria-hidden="true" />
-            <span>40C, Green View Apartments, Sector-15A, Noida, Uttar Pradesh-201301</span>
-          </div>
-          <div class="footer__contact-item">
-            <img src="./icons/phone.svg" alt="" aria-hidden="true" />
-            <span>+91 9871440094</span>
-          </div>
-          <div class="footer__contact-item">
-            <img src="./icons/email.svg" alt="" aria-hidden="true" />
-            <span>connect@ebbindia.com</span>
-          </div>
-        </div>
-        </div>
-      </footer>
+    .intro { padding: 88px 0 32px; }
+    .intro-head { max-width: 720px; margin: 0 auto; text-align: center; }
+    .intro-head .section-eyebrow { justify-content: center; }
+    .intro-head .section-eyebrow::before { display: none; }
+    .intro-head .section-sub { margin: 0 auto; }
+
+    .ptype { padding: 56px 0; scroll-margin-top: 86px; }
+    .ptype-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      align-items: center;
+      gap: 64px;
+    }
+    .ptype:nth-of-type(even) .ptype-grid { grid-template-columns: 1fr 1.05fr; }
+    .ptype:nth-of-type(even) .ptype-img { order: 2; }
+    .ptype:nth-of-type(even) .ptype-content { order: 1; }
+    .ptype-img {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 5 / 4;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(10, 37, 64, 0.14);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .ptype-grid:hover .ptype-img {
+      transform: translateY(-6px) scale(1.015);
+      box-shadow: 0 28px 64px rgba(10, 37, 64, 0.2);
+    }
+    .ptype-img img {
+      transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
+    }
+    .ptype-grid:hover .ptype-img img { transform: scale(1.06); }
+    .ptype-img::after { background: linear-gradient(to top, rgba(10, 37, 64, 0.25), transparent 50%); }
+    .ptype-badge {
+      position: absolute;
+      z-index: 2;
+      top: 20px;
+      left: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 100px;
+      color: var(--teal-dark);
+      background: rgba(255, 255, 255, 0.95);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+    }
+    .ptype-icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      margin-bottom: 22px;
+      border-radius: 16px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--aqua), var(--teal));
+      box-shadow: 0 12px 28px rgba(0, 180, 204, 0.28);
+    }
+    .ptype-icon svg { width: 25px; height: 25px; }
+    .ptype-content h2 {
+      margin-bottom: 18px;
+      color: var(--ink);
+      font-size: clamp(1.8rem, 3vw, 2.55rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+    .ptype-content p { margin-bottom: 26px; color: var(--sub); font-size: 1rem; line-height: 1.78; }
+    .ptype-features { display: grid; gap: 14px; margin-bottom: 28px; }
+    .ptype-feature {
+      display: flex;
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 6px 22px rgba(10, 37, 64, 0.04);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .ptype-feature:hover {
+      transform: translateX(6px);
+      border-color: rgba(0, 180, 204, 0.45);
+      box-shadow: 0 12px 28px rgba(10, 37, 64, 0.08);
+    }
+    .ptype-feature-check {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--teal);
+    }
+    .ptype-feature-check svg { width: 14px; height: 14px; }
+    .ptype-feature-text strong { display: block; margin-bottom: 4px; color: var(--ink); font-size: 0.96rem; }
+    .ptype-feature-text span { display: block; color: var(--sub); font-size: 0.9rem; line-height: 1.6; }
+    .ptype-cta, .btn-primary, .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 100px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .ptype-cta, .btn-primary {
+      padding: 13px 24px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--royal), var(--teal-dark));
+      box-shadow: 0 8px 24px rgba(0, 180, 204, 0.24);
+    }
+    .ptype-cta svg, .btn-primary svg { width: 18px; height: 18px; }
+    .ptype-cta:hover, .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0, 180, 204, 0.32); }
+
+    .process { margin-top: 48px; padding: 72px 0 48px; background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.54), transparent); }
+    .process-head, .principles-head, .faq-head { max-width: 720px; margin: 0 auto 44px; text-align: center; }
+    .process-head .section-eyebrow, .principles-head .section-eyebrow, .faq-head .section-eyebrow { justify-content: center; }
+    .process-head .section-eyebrow::before, .principles-head .section-eyebrow::before, .faq-head .section-eyebrow::before { display: none; }
+    .process-head .section-sub, .principles-head .section-sub, .faq-head .section-sub { margin: 0 auto; }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .process-step {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(10, 37, 64, 0.06);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+    .process-step:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 180, 204, 0.42);
+      box-shadow: 0 18px 42px rgba(10, 37, 64, 0.11);
+    }
+    .process-num {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 18px;
+      border-radius: 13px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--aqua), var(--teal));
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+    .process-step h3 { margin-bottom: 10px; color: var(--ink); font-size: 1.05rem; }
+    .process-step p { color: var(--sub); font-size: 0.9rem; line-height: 1.62; }
+
+    .proof { padding: 72px 0 48px; }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+      gap: 64px;
+    }
+    .proof-img {
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(10, 37, 64, 0.14);
+    }
+    .proof-points {
+      display: grid;
+      gap: 16px;
+      margin-top: 28px;
+      list-style: none;
+    }
+    .proof-points li {
+      display: flex;
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+    }
+    .proof-icon {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      color: var(--teal-dark);
+      background: var(--cloud);
+    }
+    .proof-icon svg { width: 20px; height: 20px; }
+    .proof-point-text strong { display: block; margin-bottom: 5px; }
+    .proof-point-text span { display: block; color: var(--sub); font-size: 0.9rem; line-height: 1.58; }
+    .impact-band {
+      margin-top: 72px;
+      padding: 52px;
+      border-radius: 24px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--royal), var(--teal-dark));
+      box-shadow: 0 24px 60px rgba(10, 37, 64, 0.18);
+    }
+    .impact-band-head { max-width: 620px; margin-bottom: 34px; }
+    .impact-band .section-eyebrow { color: rgba(255, 255, 255, 0.82); }
+    .impact-band .section-eyebrow::before { background: rgba(255, 255, 255, 0.55); }
+    .impact-band h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); line-height: 1.2; }
+    .impact-band-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .impact-stat {
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .impact-stat-num { display: block; margin-bottom: 8px; font-size: 2rem; font-weight: 800; }
+    .impact-stat-lbl { color: rgba(255, 255, 255, 0.82); font-size: 0.9rem; }
+
+    .principles { padding: 72px 0 48px; }
+    .principles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .principle-card {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 12px 34px rgba(10, 37, 64, 0.06);
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+    .principle-card:hover { transform: translateY(-6px); box-shadow: 0 18px 42px rgba(10, 37, 64, 0.1); }
+    .principle-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      padding: 8px 14px;
+      border-radius: 100px;
+      color: var(--teal-dark);
+      background: var(--cloud);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .principle-card.wont .principle-label { color: #c46060; background: #fff0f0; }
+    .principle-list { display: grid; gap: 16px; list-style: none; }
+    .principle-list li { display: flex; gap: 12px; color: var(--sub); font-size: 0.92rem; line-height: 1.6; }
+    .principle-list svg { flex: 0 0 auto; width: 18px; height: 18px; color: var(--teal-dark); }
+    .principle-card.wont svg { color: #c46060; }
+    .principle-list strong { color: var(--ink); }
+
+    .faq { padding: 72px 0 48px; }
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(10, 37, 64, 0.04);
+    }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      width: 100%;
+      padding: 20px 22px;
+      border: 0;
+      color: var(--ink);
+      background: transparent;
+      font: inherit;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+    }
+    .faq-q-icon {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      color: var(--teal-dark);
+      background: var(--cloud);
+      transition: transform 0.25s ease;
+    }
+    .faq-q-icon svg { width: 16px; height: 16px; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.28s ease; }
+    .faq-a-inner { padding: 0 22px 22px; color: var(--sub); font-size: 0.95rem; line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 420px; }
+    .faq-item.open .faq-q-icon { transform: rotate(180deg); }
+
+    .cta-wrap { padding: 0 52px 88px; }
+    .cta-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 58px 44px;
+      border-radius: 26px;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--midnight), var(--royal));
+      box-shadow: 0 24px 60px rgba(10, 37, 64, 0.2);
+    }
+    .cta-inner .section-eyebrow { justify-content: center; color: rgba(255, 255, 255, 0.78); }
+    .cta-inner .section-eyebrow::before { display: none; }
+    .cta-inner h2 { margin-bottom: 14px; font-size: clamp(1.9rem, 3vw, 2.55rem); line-height: 1.16; }
+    .cta-inner p { max-width: 640px; margin: 0 auto 28px; color: rgba(255, 255, 255, 0.78); line-height: 1.7; }
+    .cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .btn-outline {
+      padding: 13px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .btn-outline:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.16); }
+
+    .footer {
+      padding: 64px clamp(20px, 5vw, 54px) 26px;
+      color: rgba(255, 255, 255, 0.78);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(57, 203, 237, 0.16), transparent 30%),
+        linear-gradient(135deg, #1b4f8a 0%, #0d2b3e 58%, #0090a8 100%);
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.72fr 0.72fr 1.05fr;
+      gap: 44px;
+      max-width: 1160px;
+      margin: 0 auto 40px;
+    }
+    .brand--footer { display: inline-flex; align-items: center; margin-bottom: 18px; }
+    .brand__logo--footer { display: inline-flex; align-items: center; justify-content: center; }
+    .brand__logo-image--footer { display: block; width: 130px; max-height: 62px; object-fit: contain; filter: brightness(0) invert(1); }
+    .footer__copy { max-width: 320px; color: rgba(255, 255, 255, 0.72); line-height: 1.72; }
+    .socials { display: flex; gap: 10px; margin-top: 22px; }
+    .socials a {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 50%;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      transition: transform 0.24s ease, background 0.24s ease, border-color 0.24s ease;
+    }
+    .socials a[aria-label="Facebook"] { color: #68a8ff; }
+    .socials a[aria-label="Twitter"] { color: #38d4ff; }
+    .socials a[aria-label="Instagram"] { color: #ff78b7; }
+    .socials a[aria-label="LinkedIn"] { color: #72b7ff; }
+    .socials a:hover { transform: translateY(-4px); border-color: rgba(78, 197, 212, 0.55); background: rgba(78, 197, 212, 0.18); }
+    .socials svg { width: 18px; height: 18px; fill: currentColor; stroke: none; }
+    .footer__links { display: grid; align-content: start; gap: 12px; }
+    .footer__links a {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.94rem;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .footer__links a:hover { color: #fff; transform: translateX(4px); }
+    .footer__contact { display: grid; align-content: start; gap: 16px; }
+    .footer__contact-item { display: flex; align-items: flex-start; gap: 12px; color: rgba(255, 255, 255, 0.72); line-height: 1.55; }
+    .footer__contact-item img { width: 18px; height: 18px; margin-top: 2px; filter: brightness(0) invert(1); opacity: 0.78; }
+    .footer__bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.56);
+      font-size: 0.86rem;
+    }
+    .footer__bottom-links { display: flex; gap: 18px; }
+    .footer__bottom-links a:hover { color: #fff; }
+
+    @media (max-width: 980px) {
+      .topbar { padding: 0 24px; }
+      .nav { gap: 14px; }
+      .nav a { font-size: 0.82rem; }
+      .partnership-hero { padding: 72px 24px 126px; }
+      .hero-feature-wrap, .page-wrap { padding: 0 24px; }
+      .ptype-grid, .ptype:nth-of-type(even) .ptype-grid, .proof-grid, .principles-grid { grid-template-columns: 1fr; gap: 34px; }
+      .ptype:nth-of-type(even) .ptype-img, .ptype:nth-of-type(even) .ptype-content { order: initial; }
+      .process-grid, .impact-band-grid { grid-template-columns: 1fr 1fr; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      body { padding-top: 76px; }
+      .topbar { min-height: 76px; padding: 0 18px; }
+      .brand__logo,
+      .brand__logo-image { width: 154px; }
+      .nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 18px;
+        left: 18px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 16px;
+        border: 1px solid rgba(24, 60, 107, 0.12);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 18px 42px rgba(18, 44, 79, 0.13);
+      }
+      .nav.is-open { display: flex; }
+      .nav a { padding: 11px 8px; }
+      .menu-toggle { display: block; }
+      .topbar > .button { display: none; }
+      .partnership-hero h1 { font-size: 2.25rem; }
+      .hero-feature-caption { position: static; flex-direction: column; align-items: flex-start; padding: 18px; background: rgba(10, 37, 64, 0.82); }
+      .hero-feature { aspect-ratio: auto; }
+      .hero-feature img { height: 310px; }
+      .intro { padding-top: 64px; }
+      .ptype { padding: 42px 0; }
+      .process-grid, .impact-band-grid, .ft { grid-template-columns: 1fr; }
+      .impact-band { padding: 34px 24px; }
+      .cta-wrap { padding: 0 24px 72px; }
+      .cta-inner { padding: 44px 24px; }
+      .footer { padding: 44px 24px 24px; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .footer__bottom { flex-direction: column; }
+      .footer__bottom-links { flex-wrap: wrap; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./index.html" aria-label="Go to home">
+      <div class="brand__logo" aria-label="Education Beyond Borders">
+        <img class="brand__logo-image" src="./logo.png" alt="Education Beyond Borders logo" />
+      </div>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="./index.html">Home</a>
+      <a href="./about.html">About us</a>
+      <a href="./programs.html">Our Programs</a>
+      <a href="./report.html">Impact Report</a>
+      <a class="is-active" href="./partnerships.html">Partnerships</a>
+      <a href="./gallery.html">Gallery</a>
+    </nav>
+    <a class="button button--primary button--small" href="./contact.html">Contact Us</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <section class="partnership-hero">
+    <div class="partnership-hero-inner">
+      <div class="partnership-hero-pill"><span class="led"></span> Partner With Us</div>
+      <h1>Education that outlasts <span class="italic">the launch event.</span></h1>
+      <p>We work with schools, corporates, NGOs, and individuals who want their resources behind programs that actually reach students and keep reaching them, month after month, year after year.</p>
+      <div class="hero-jump">
+        <a href="#csr" class="jump-btn"><span class="dot"></span> For CSR Teams</a>
+        <a href="#schools" class="jump-btn"><span class="dot"></span> For Schools</a>
+        <a href="#ngos" class="jump-btn"><span class="dot"></span> For NGOs</a>
+        <a href="#donors" class="jump-btn"><span class="dot"></span> For Individuals</a>
+      </div>
     </div>
-    <script src="./script.js"></script>
-  </body>
-</html>
+  </section>
 
+  <div class="hero-feature-wrap">
+    <div class="hero-feature">
+      <img src="./images/partnership-ref-1.jpeg" alt="A batch of students receiving certificates at a school in partnership with HCL Foundation" />
+      <div class="hero-feature-caption">
+        <span class="cap-text">Certificate day at one of our partner schools - students completing a life-skills cohort delivered under a CSR partnership.</span>
+        <span class="cap-partner"><span class="dot"></span> Partner: HCL Foundation</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="intro">
+    <div class="page-wrap">
+      <div class="intro-head reveal">
+        <div class="section-eyebrow">Four Ways To Partner</div>
+        <h2 class="section-title">Different resources, <span class="italic">same commitment.</span></h2>
+        <p class="section-sub">Whether you bring a CSR budget, a school community, an NGO looking for an implementation partner, or a personal commitment to education, we have a structured way for you to create real, trackable change. No vague promises, no generic initiatives.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ptype" id="csr">
+    <div class="page-wrap">
+      <div class="ptype-grid">
+        <div class="ptype-img">
+          <span class="ptype-badge"><span class="dot"></span> For Corporates</span>
+          <img src="./images/partnership-ref-2.jpeg" alt="Students receiving program kits and certificates under a corporate CSR partnership" />
+        </div>
+        <div class="ptype-content reveal">
+          <div class="ptype-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
+          <h2>CSR that reaches <span class="italic">the last bench.</span></h2>
+          <p>Most CSR budgets get eaten by intermediaries, event costs, and one-time activations. We handle CSR partnerships end-to-end so your investment lands inside classrooms and your reporting tells you exactly what it changed.</p>
+          <div class="ptype-features">
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>End-to-end program delivery</strong><span>From needs assessment and school onboarding to in-classroom educator delivery, we run the operation so your team does not have to.</span></div></div>
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Student-level impact reporting</strong><span>Attendance, engagement, and learning outcomes tracked at the individual level and reported back in formats your CSR committee actually needs.</span></div></div>
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Employee engagement built in</strong><span>Optional mentorship sessions, office visits for students, and volunteer opportunities designed around your team's bandwidth.</span></div></div>
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Compliance documentation</strong><span>Utilisation reports, photographic documentation, and on-ground verification structured to fit your internal CSR reporting needs.</span></div></div>
+          </div>
+          <a href="contact.html" class="ptype-cta">Explore a CSR partnership <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ptype" id="schools">
+    <div class="page-wrap">
+      <div class="ptype-grid">
+        <div class="ptype-img">
+          <span class="ptype-badge"><span class="dot"></span> For Schools</span>
+          <img src="./images/partnership-ref-3.jpeg" alt="Certificate ceremony at a partner school with EBB team and school dignitaries" />
+        </div>
+        <div class="ptype-content reveal">
+          <div class="ptype-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <h2>Programs that fit <span class="italic">inside your school day.</span></h2>
+          <p>Your teachers are already stretched. Your students deserve more than textbook learning. We bring structured, activity-based programs into your school without disrupting the academic calendar or overloading your faculty.</p>
+          <div class="ptype-features">
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>No cost to the school</strong><span>Programs are underwritten by CSR partners, NGO collaborators, and individual supporters. Schools provide classroom space and scheduling.</span></div></div>
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Our educators, your calendar</strong><span>Trained facilitators deliver weekly sessions inside your school around exam weeks, festivals, and board prep.</span></div></div>
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Programs that complement the syllabus</strong><span>Life skills, financial literacy, communication, leadership, AI foundations, and more.</span></div></div>
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Outcome reporting for your records</strong><span>Pre and post assessments, attendance logs, and a program completion report for every cohort.</span></div></div>
+          </div>
+          <a href="contact.html" class="ptype-cta">Bring a program to your school <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ptype" id="ngos">
+    <div class="page-wrap">
+      <div class="ptype-grid">
+        <div class="ptype-img">
+          <span class="ptype-badge"><span class="dot"></span> For NGOs</span>
+          <img src="./images/partnership-ref-4.jpeg" alt="Operational planning session with partner organisations" />
+        </div>
+        <div class="ptype-content reveal">
+          <div class="ptype-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
+          <h2>An implementation partner for <span class="italic">NGOs doing the work.</span></h2>
+          <p>If you are an NGO working in education, livelihoods, women's empowerment, or youth development and need a structured delivery partner, that is exactly what we do. You bring the mission and community access; we bring the curriculum and trained educators.</p>
+          <div class="ptype-features">
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Ready-to-run curriculum</strong><span>Nine structured programs across life skills, communication, English, financial literacy, leadership, and AI.</span></div></div>
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Trained educators on the ground</strong><span>We bring our own facilitators, or we train yours, depending on what fits your cohorts and budget.</span></div></div>
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Co-branded or white-label delivery</strong><span>Run it under your NGO name, co-branded with us, or as a clearly attributed collaboration.</span></div></div>
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Shared reporting for your funders</strong><span>We produce impact data, beneficiary records, and documentation you can pass directly to donors or grant-makers.</span></div></div>
+          </div>
+          <a href="contact.html" class="ptype-cta">Partner with us as an NGO <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ptype" id="donors">
+    <div class="page-wrap">
+      <div class="ptype-grid">
+        <div class="ptype-img">
+          <span class="ptype-badge"><span class="dot"></span> For Individuals</span>
+          <img src="./images/partnership-ref-5.jpeg" alt="A smaller group of students with EBB mentors in an informal setting" />
+        </div>
+        <div class="ptype-content reveal">
+          <div class="ptype-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+          <h2>For individuals who want to do <span class="italic">more than just send money.</span></h2>
+          <p>If you have been looking for a way to give back that does not involve writing a cheque into a void, this is it. Sponsor a specific cohort, fund a program in a specific school, or commit to a monthly contribution that adds up to real classroom impact.</p>
+          <div class="ptype-features">
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Sponsor a specific cohort</strong><span>Pick a school, pick a program, and fund that specific batch of students from day one to certificate day.</span></div></div>
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Real updates, not generic newsletters</strong><span>You receive photos from sessions, student outcomes, and updates from the cohort you funded.</span></div></div>
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Transparent about what we are</strong><span>EBB is a private organisation, not a registered NGO, so individual contributions do not qualify for 80G tax benefits.</span></div></div>
+            <div class="ptype-feature"><div class="ptype-feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ptype-feature-text"><strong>Visit the classrooms you fund</strong><span>Contributors are welcome to visit partner schools and meet the students whose learning they have supported.</span></div></div>
+          </div>
+          <a href="contact.html" class="ptype-cta">Become a contributor <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process">
+    <div class="page-wrap">
+      <div class="process-head reveal">
+        <div class="section-eyebrow">How It Works</div>
+        <h2 class="section-title">From first call to <span class="italic">first classroom.</span></h2>
+        <p class="section-sub">Most partnerships with us go live within 6 weeks of our first conversation. Here is what happens between the two.</p>
+      </div>
+      <div class="process-grid reveal-stagger">
+        <div class="process-step"><div class="process-num">01</div><h3>Discovery call</h3><p>A 30-minute conversation to understand your goals, constraints, and what success would look like for you.</p></div>
+        <div class="process-step"><div class="process-num">02</div><h3>Proposal &amp; scope</h3><p>We share a concrete proposal: programs, schools, timelines, outcomes, and costs.</p></div>
+        <div class="process-step"><div class="process-num">03</div><h3>Onboarding</h3><p>MOU signing, school alignment, educator deployment, and baseline assessments, usually within 3 weeks.</p></div>
+        <div class="process-step"><div class="process-num">04</div><h3>Live delivery</h3><p>Programs run weekly. You get monthly reports. We catch up quarterly. No surprises, no quiet quarters.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="page-wrap">
+      <div class="proof-grid">
+        <div class="proof-img reveal"><img src="./images/partnership-ref-6.jpeg" alt="EBB team with partner organisation representatives" /></div>
+        <div class="proof-content reveal">
+          <div class="section-eyebrow">Why Partner With Us</div>
+          <h2 class="section-title">Structure, transparency, <span class="italic">and staying power.</span></h2>
+          <p class="section-sub">We are not the biggest name in the space, and we are not trying to be. What we are is the one that shows up when we say we will, reports honestly, and builds programs designed to outlast any single funder.</p>
+          <ul class="proof-points">
+            <li><div class="proof-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><div class="proof-point-text"><strong>Built for the long run, not the launch</strong><span>Our shortest program runs 8 weeks. Our longest runs 4 months. Partners continue because the work compounds.</span></div></li>
+            <li><div class="proof-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 6-6"/></svg></div><div class="proof-point-text"><strong>Measurable outcomes, not vanity metrics</strong><span>We track attendance, skill-level pre/post scores, and qualitative shifts.</span></div></li>
+            <li><div class="proof-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="proof-point-text"><strong>Fast to deploy, slow to drop</strong><span>Most partnerships go live within 6 weeks, and support continues after certificate day.</span></div></li>
+            <li><div class="proof-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><div class="proof-point-text"><strong>Small team, tight execution</strong><span>Fewer programs, done properly, by a team that knows every school, cohort, and partner personally.</span></div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="impact-band">
+        <div class="impact-band-head">
+          <div class="section-eyebrow">What Partnership Looks Like</div>
+          <h2>The numbers behind <span class="italic">what we have built so far.</span></h2>
+        </div>
+        <div class="impact-band-grid">
+          <div class="impact-stat"><span class="impact-stat-num">1,000+</span><span class="impact-stat-lbl">Students Reached</span></div>
+          <div class="impact-stat"><span class="impact-stat-num">8+</span><span class="impact-stat-lbl">Partner Schools</span></div>
+          <div class="impact-stat"><span class="impact-stat-num">9</span><span class="impact-stat-lbl">Active Programs</span></div>
+          <div class="impact-stat"><span class="impact-stat-num">76%</span><span class="impact-stat-lbl">Completion Rate</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="principles">
+    <div class="page-wrap">
+      <div class="principles-head reveal">
+        <div class="section-eyebrow">How We Work With Partners</div>
+        <h2 class="section-title">What we always do and what <span class="italic">we will not.</span></h2>
+        <p class="section-sub">A partnership only works when both sides know the rules of engagement. Here are ours, upfront.</p>
+      </div>
+      <div class="principles-grid reveal-stagger">
+        <div class="principle-card will">
+          <span class="principle-label"><span class="dot"></span> We will</span>
+          <ul class="principle-list">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Say no if we cannot deliver.</strong> If a timeline or budget will not produce real outcomes, we will tell you before we sign.</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Report what went wrong.</strong> Quarterly reports include the things that did not work, not just the highlights.</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Share raw data on request.</strong> Attendance logs, session notes, and assessment results are available to partners.</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Credit partners honestly.</strong> Your contribution is visible in classrooms, certificates, and reports.</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Stay accountable to students first.</strong> If a partner request conflicts with what is right for students, students win.</span></li>
+          </ul>
+        </div>
+        <div class="principle-card wont">
+          <span class="principle-label"><span class="dot"></span> We will not</span>
+          <ul class="principle-list">
+            <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Run one-day drives or branding events.</strong> If the program is not structured, measurable, and sustained, we will not take the money.</span></li>
+            <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Inflate numbers for optics.</strong> Our reports use actual reach, not vague beneficiary counts.</span></li>
+            <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Use students as props.</strong> No posed photo opportunities, scripted testimonials, or classroom visits timed for PR.</span></li>
+            <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Accept scope that does not fit the school.</strong> If the ask does not match what the school needs, the answer is no.</span></li>
+            <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Overcommit to grow faster.</strong> We would rather serve 8 schools exceptionally well than 80 poorly.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="page-wrap">
+      <div class="faq-head reveal">
+        <div class="section-eyebrow">Common Questions</div>
+        <h2 class="section-title">The things partners <span class="italic">usually ask first.</span></h2>
+        <p class="section-sub">If your question is not answered here, just email us. We will come back within a working day.</p>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item"><button class="faq-q"><span>Is EBB an NGO?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">No. EBB is a private organisation, not a registered NGO. This means contributions to EBB from individuals do not qualify for 80G tax deduction. For CSR partners looking for Schedule VII compliant routing, we can structure partnerships through NGO collaborators where needed.</div></div></div>
+        <div class="faq-item"><button class="faq-q"><span>What is the minimum commitment to start a CSR partnership?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Most CSR partnerships start at one full program cycle in one school, typically 8 weeks of weekly sessions reaching 40 to 60 students. We size the proposal to what actually produces outcomes.</div></div></div>
+        <div class="faq-item"><button class="faq-q"><span>How do CSR contributions qualify under Indian law if you are not an NGO?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">For corporate CSR contributions, we typically route partnerships through NGO collaborators or structure them as direct service agreements. The exact structure depends on your compliance team's preference.</div></div></div>
+        <div class="faq-item"><button class="faq-q"><span>We are an NGO. What does partnering with EBB look like?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">You bring the community access; we bring curriculum, trained educators, and delivery infrastructure. Programs can be under your NGO branding, co-branded, or run as an attributed collaboration.</div></div></div>
+        <div class="faq-item"><button class="faq-q"><span>How do you select which schools to work with?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">We look for schools serving under-resourced students where life-skills programming would create value, and where leadership is genuinely invested in making time for it.</div></div></div>
+        <div class="faq-item"><button class="faq-q"><span>What kind of reporting do you provide?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Every partnership gets progress reports, review notes, and a full impact report at cohort completion, including attendance, photographs, qualitative feedback, and assessment data where applicable.</div></div></div>
+        <div class="faq-item"><button class="faq-q"><span>Can we bring our own employees into the program?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. We can integrate structured mentorship sessions, office visits, volunteer workshops, or Q and A panels around your team's realistic bandwidth.</div></div></div>
+        <div class="faq-item"><button class="faq-q"><span>How much does it cost a school to have EBB come in?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Nothing. For partner schools, program costs are covered through CSR partnerships, NGO collaborations, and individual contributors. Schools contribute classroom space and scheduling coordination.</div></div></div>
+        <div class="faq-item"><button class="faq-q"><span>Can I visit the schools I support?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. We arrange school visits for partners and contributors during live program sessions with the school's consent and at times that do not disrupt the day.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-wrap">
+    <div class="cta-inner reveal">
+      <div class="section-eyebrow">Let's Talk</div>
+      <h2>Start with a <span class="italic">30-minute call.</span></h2>
+      <p>No pitch decks, no pressure. We will ask what you are trying to do, tell you honestly whether we are the right fit, and if we are, come back with a proposal inside a week.</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn-primary">Book a call <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="mailto:connect@ebbindia.com" class="btn-outline">Or email us</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" id="contact">
+    <div class="footer__grid">
+      <div>
+        <div class="brand brand--footer">
+          <div class="brand__logo brand__logo--footer" aria-label="Education Beyond Borders">
+            <img class="brand__logo-image brand__logo-image--footer" src="./logo.png" alt="Education Beyond Borders logo" />
+          </div>
+        </div>
+        <p class="footer__copy">
+          Empowering communities through skill development, school partnerships, and impact-driven educational programs.
+        </p>
+        <div class="socials" aria-label="Social links">
+          <a href="https://www.facebook.com/ebbindia" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13 22v-8h3l1-4h-4V8c0-1.15.39-2 2-2h2V2.5A21.4 21.4 0 0 0 14 2c-3 0-5 1.79-5 5v3H6v4h3v8Z" /></svg>
+          </a>
+          <a href="https://x.com/ebbindia" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M22 5.92a8.36 8.36 0 0 1-2.36.64A4.1 4.1 0 0 0 21.45 4a8.18 8.18 0 0 1-2.6 1A4.07 4.07 0 0 0 12 7.87a11.55 11.55 0 0 1-8.38-4.25 4.07 4.07 0 0 0 1.26 5.43A4 4 0 0 1 3 8.49v.05a4.08 4.08 0 0 0 3.27 4 4.1 4.1 0 0 1-1.83.07 4.08 4.08 0 0 0 3.8 2.83A8.18 8.18 0 0 1 2 17.54 11.53 11.53 0 0 0 8.29 19.4c7.55 0 11.67-6.25 11.67-11.66 0-.18 0-.36-.01-.53A8.26 8.26 0 0 0 22 5.92Z" /></svg>
+          </a>
+          <a href="https://www.instagram.com/ebbindia" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.38a1.13 1.13 0 1 1-1.13 1.13 1.13 1.13 0 0 1 1.13-1.13Z" /></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/ebbindia" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38ZM5.25 3A1.95 1.95 0 1 0 7.2 4.95 1.95 1.95 0 0 0 5.25 3Zm15.19 8.2c0-3.02-1.61-4.43-3.76-4.43a3.24 3.24 0 0 0-2.93 1.61V8.5h-3.24c.04.63 0 11.5 0 11.5h3.24v-6.42a2.14 2.14 0 0 1 .1-.77 2.12 2.12 0 0 1 1.98-1.42c1.39 0 1.95 1.06 1.95 2.62V20H21s.04-5.55.04-8.8Z" /></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <a href="./about.html">About us</a>
+        <a href="./programs.html">Our Programs</a>
+        <a href="./report.html">Impact Report</a>
+        <a href="./partnerships.html">Partnerships</a>
+        <a href="./career.html">Career</a>
+        <a href="./gallery.html">Gallery</a>
+      </div>
+
+      <div class="footer__links">
+        <a href="./contact.html">Partner with CSR</a>
+      </div>
+
+      <div class="footer__contact">
+        <div class="footer__contact-item">
+          <img src="./icons/location.svg" alt="" aria-hidden="true" />
+          <span>40C, Green View Apartments, Sector-15A, Noida, Uttar Pradesh-201301</span>
+        </div>
+        <div class="footer__contact-item">
+          <img src="./icons/phone.svg" alt="" aria-hidden="true" />
+          <span>+91 9871440094</span>
+        </div>
+        <div class="footer__contact-item">
+          <img src="./icons/email.svg" alt="" aria-hidden="true" />
+          <span>connect@ebbindia.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; 2026 Education Beyond Borders. All rights reserved.</span>
+      <div class="footer__bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+  <script>
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+    document.querySelectorAll(".reveal, .reveal-stagger").forEach((el) => revealObs.observe(el));
+
+    document.querySelectorAll(".faq-q").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item");
+        const wasOpen = item.classList.contains("open");
+        document.querySelectorAll(".faq-item.open").forEach((openItem) => openItem.classList.remove("open"));
+        if (!wasOpen) item.classList.add("open");
+      });
+    });
+  </script>
+</body>
+</html>

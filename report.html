@@ -18,23 +18,24 @@
   --radius-md:14px;--radius-lg:20px;--radius-xl:28px;--container:min(1480px,calc(100vw - 48px));
 }
 html{font-size:16px;scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--off-wh);line-height:1.6;padding-top:92px}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--off-wh);line-height:1.6;padding-top:106px}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 
 /* SITE NAV */
-.topbar{position:fixed;top:0;left:0;z-index:50;width:100%;min-height:84px;padding:0 max(24px,calc((100vw - 1480px) / 2));display:flex;align-items:center;justify-content:space-between;gap:24px;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(24,60,107,.08);box-shadow:0 8px 24px rgba(18,44,79,.06)}
+.topbar{position:fixed;top:0;left:0;z-index:50;width:100%;min-height:106px;padding:0 max(36px,calc((100vw - 1830px) / 2));display:flex;align-items:center;justify-content:space-between;gap:34px;background:#fff;border-bottom:1px solid rgba(24,60,107,.04);box-shadow:0 12px 28px rgba(18,44,79,.035)}
 .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.brand__logo{width:200px;display:flex;align-items:center}
-.brand__logo-image{width:200px;height:auto;object-fit:contain}
-.nav{display:flex;align-items:center;margin-left:auto;gap:26px;font:600 1rem 'Manrope',sans-serif;color:#435671}
-.nav a{position:relative;padding:8px 0;transition:color .25s ease,transform .25s ease}
-.nav a::after{content:'';position:absolute;left:0;width:100%;bottom:-4px;height:2px;transform:scaleX(0);transform-origin:left;border-radius:999px;background:#39cbed;transition:transform .25s ease}
-.nav a:hover,.nav a:focus-visible,.nav a.is-active{color:#0f4f85}
+.brand__logo{width:clamp(190px,14vw,270px);display:flex;align-items:center}
+.brand__logo-image{width:clamp(190px,14vw,270px);height:auto;object-fit:contain}
+.nav{display:flex;align-items:center;margin-left:auto;gap:clamp(22px,1.55vw,30px);font:700 clamp(1rem,1.15vw,1.35rem) 'Manrope',sans-serif;color:#40516a}
+.nav a{position:relative;padding:11px 0 14px;transition:color .25s ease,transform .25s ease}
+.nav a::after{content:'';position:absolute;left:0;width:100%;bottom:0;height:3px;transform:scaleX(0);transform-origin:left;border-radius:999px;background:#00b4cc;transition:transform .25s ease}
+.nav a:hover,.nav a:focus-visible,.nav a.is-active{color:#1b4f8a}
 .nav a:hover::after,.nav a:focus-visible::after,.nav a.is-active::after{transform:scaleX(1)}
-.button{display:inline-flex;align-items:center;justify-content:center;min-width:148px;min-height:46px;padding:0 20px;border:none;border-radius:999px;font:700 .96rem 'Manrope',sans-serif;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease}
+.button{display:inline-flex;align-items:center;justify-content:center;min-width:clamp(150px,10vw,210px);min-height:58px;padding:0 28px;border:none;border-radius:999px;font:700 clamp(1rem,1vw,1.25rem) 'Manrope',sans-serif;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease}
 .button:hover,.button:focus-visible{transform:translateY(-2px)}
-.button--primary{background:linear-gradient(135deg,#39cbed,#169ed7);color:#fff;box-shadow:0 18px 36px rgba(22,158,215,.24)}
+.button--primary{background:linear-gradient(135deg,#39cbed 0%,#00b4cc 100%);color:#fff;box-shadow:0 18px 35px rgba(0,180,204,.28)}
+.button--primary:hover,.button--primary:focus-visible{background:linear-gradient(135deg,#39cbed 0%,#0090a8 100%)}
 .menu-toggle{display:none;width:48px;height:48px;padding:0;border:1px solid rgba(24,60,107,.1);border-radius:14px;background:#fff}
 .menu-toggle span{display:block;width:20px;height:2px;margin:5px auto;background:#0f4f85}
 
@@ -166,9 +167,13 @@ img{max-width:100%;display:block}
 .footer__contact-item{display:flex;gap:16px;align-items:center;color:#39cbed}
 .footer__contact-item img{display:block;width:20px;height:20px;flex:0 0 20px;margin-top:3px}
 .footer__contact-item span{display:block;color:rgba(255,255,255,.74);font:500 1rem/1.7 'Manrope',sans-serif}
+.socials{display:flex;gap:14px;margin-top:28px}
+.socials a{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.08);color:rgba(255,255,255,.86);transition:transform .25s ease,background .25s ease,color .25s ease}
+.socials a:hover,.socials a:focus-visible{transform:translateY(-3px);background:#39cbed;color:#0d2b3e}
+.socials svg{width:24px;height:24px;fill:currentColor}
 
 @media(max-width:980px){
-  body{padding-top:88px}
+  body{padding-top:78px}
   .topbar{flex-wrap:wrap;min-height:auto;padding:16px 18px 14px}
   .nav{order:4;width:100%;display:none;flex-direction:column;align-items:flex-start;gap:10px;padding:12px 0 4px}
   .nav.is-open{display:flex}
@@ -205,14 +210,13 @@ img{max-width:100%;display:block}
   </a>
   <nav class="nav" id="siteNav" aria-label="Main navigation">
     <a href="./index.html">Home</a>
-    <a href="./about.html">About Us</a>
-    <a href="./programs.html">Programs</a>
+    <a href="./about.html">About us</a>
+    <a href="./programs.html">Our Programs</a>
     <a class="is-active" href="./report.html">Impact Report</a>
-    <a href="./blog.html">Blog</a>
-    <a href="./gallery.html">Gallery</a>
     <a href="./partnerships.html">Partnerships</a>
+    <a href="./gallery.html">Gallery</a>
   </nav>
-  <a class="button button--primary" href="./contact.html">Contact Us</a>
+  <a class="button button--primary button--small" href="./contact.html">Contact Us</a>
   <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
     <span></span>
     <span></span>
@@ -489,21 +493,29 @@ img{max-width:100%;display:block}
         Empowering communities through skill development, school partnerships, and
         impact-driven educational programs.
       </p>
+      <div class="socials" aria-label="Social links">
+        <a href="https://www.facebook.com/ebbindia" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-8h3l1-4h-4V8c0-1.15.39-2 2-2h2V2.5A21.4 21.4 0 0 0 14 2c-3 0-5 1.79-5 5v3H6v4h3v8Z"/></svg></a>
+        <a href="https://www.instagram.com/ebbindia" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.38a1.13 1.13 0 1 1-1.13 1.13 1.13 1.13 0 0 1 1.13-1.13Z"/></svg></a>
+        <a href="https://www.linkedin.com/company/ebbindia" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38ZM5.25 3A1.95 1.95 0 1 0 7.2 4.95 1.95 1.95 0 0 0 5.25 3Zm15.19 8.2c0-3.02-1.61-4.43-3.76-4.43a3.24 3.24 0 0 0-2.93 1.61V8.5h-3.24c.04.63 0 11.5 0 11.5h3.24v-6.42a2.14 2.14 0 0 1 .1-.77 2.12 2.12 0 0 1 1.98-1.42c1.39 0 1.95 1.06 1.95 2.62V20H21s.04-5.55.04-8.8Z"/></svg></a>
+      </div>
+
+
     </div>
 
+
     <div class="footer__links">
-      <a href="./about.html">About Us</a>
+      <a href="./about.html">About us</a>
       <a href="./programs.html">Our Programs</a>
       <a href="./report.html">Impact Report</a>
-      <a href="./blog.html">Blog</a>
-      <a href="./gallery.html">Gallery</a>
+      <!-- <a href="./blog.html">Blog</a> -->
+
       <a href="./partnerships.html">Partnerships</a>
+      <a href="./career.html">Career</a>
+      <a href="./gallery.html">Gallery</a>
     </div>
 
     <div class="footer__links">
       <a href="./contact.html">Partner with CSR</a>
-      <a href="./contact.html">Partner with Schools</a>
-      <a href="./contact.html">Become a Partner</a>
     </div>
 
     <div class="footer__contact">
@@ -519,6 +531,14 @@ img{max-width:100%;display:block}
         <img src="./icons/email.svg" alt="" aria-hidden="true"/>
         <span>connect@ebbindia.com</span>
       </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <span>&copy; 2026 Education Beyond Borders. All rights reserved.</span>
+    <div class="footer__bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
     </div>
   </div>
 </footer>
