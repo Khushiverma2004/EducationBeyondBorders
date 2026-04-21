@@ -10,7 +10,175 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
-  </head>
+  <style id="shared-footer-style">
+  .footer {
+    margin-top: 26px;
+    padding: 64px 0 26px;
+    background: radial-gradient(circle at 12% 18%, rgba(57, 203, 237, 0.16), transparent 30%), linear-gradient(135deg, #1b4f8a 0%, #0d2b3e 58%, #0090a8 100%);
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .footer__grid,
+  .footer__bottom {
+    width: min(1480px, calc(100vw - 48px));
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.72fr 0.72fr 1.05fr;
+    gap: 44px;
+  }
+
+  .brand--footer {
+    align-items: flex-start;
+  }
+
+  .brand__logo--footer {
+    width: auto;
+  }
+
+  .brand__logo-image--footer {
+    width: 130px;
+    max-height: 62px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  .footer__copy {
+    max-width: 320px;
+    margin-top: 18px;
+    color: rgba(255, 255, 255, 0.72);
+    font: 500 1rem/1.8 "DM Sans", "Manrope", sans-serif;
+  }
+
+  .footer .socials {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .footer .socials a,
+  .footer .socials a[aria-label] {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.86);
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+  }
+
+  .footer .socials a:hover,
+  .footer .socials a:focus-visible,
+  .footer .socials a[aria-label]:hover,
+  .footer .socials a[aria-label]:focus-visible {
+    transform: translateY(-3px);
+    background: #39cbed;
+    color: #0d2b3e;
+  }
+
+  .footer .socials svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    stroke: none;
+  }
+
+  .footer__links {
+    display: grid;
+    align-content: start;
+    gap: 12px;
+  }
+
+  .footer__links a,
+  .footer__bottom a {
+    color: rgba(255, 255, 255, 0.72);
+    font: 500 0.94rem "DM Sans", "Manrope", sans-serif;
+    text-decoration: none;
+    transform: none;
+  }
+
+  .footer__links a:hover,
+  .footer__bottom a:hover {
+    color: #39cbed;
+    transform: none;
+  }
+
+  .footer__contact {
+    display: grid;
+    align-content: start;
+    gap: 16px;
+  }
+
+  .footer__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .footer__contact-item img {
+    display: block;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    margin-top: 2px;
+    filter: invert(67%) sepia(68%) saturate(594%) hue-rotate(143deg) brightness(97%) contrast(92%);
+    opacity: 0.95;
+  }
+
+  .footer__contact-item span,
+  .footer__contact-item a {
+    display: block;
+    color: rgba(255, 255, 255, 0.72);
+    font: 500 1rem/1.55 "DM Sans", "Manrope", sans-serif;
+    text-decoration: none;
+  }
+
+  .footer__contact-item a:hover {
+    color: #39cbed;
+  }
+
+  .footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.56);
+    font: 500 0.86rem "DM Sans", "Manrope", sans-serif;
+  }
+
+  .footer__bottom-links {
+    display: flex;
+    gap: 18px;
+  }
+
+  @media (max-width: 980px) {
+    .footer__grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      width: min(1480px, calc(100vw - 36px));
+    }
+
+    .footer__bottom {
+      width: min(1480px, calc(100vw - 36px));
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer__bottom-links {
+      flex-wrap: wrap;
+    }
+  }
+</style>
+</head>
   <body>
     <div class="page-shell">
       <header class="topbar">
@@ -50,93 +218,138 @@
         <section class="gallery section">
           <div class="gallery-grid">
             <article class="gallery-card">
-              <img src="./images/1images.jpeg" alt="Students and teachers holding certificates during a school recognition event" />
+              <img src="./images/1images.jpeg" alt="Students and teachers holding certificates during a school recognition event" loading="lazy" />
             </article>
 
             <article class="gallery-card">
-              <img src="./images/2images.jpeg" alt="Students receiving certificates and school bags in a classroom ceremony" />
+              <img src="./images/2images.jpeg" alt="Students receiving certificates and school bags in a classroom ceremony" loading="lazy" />
             </article>
 
             <article class="gallery-card">
-              <img src="./images/3images.jpeg" alt="Students with guests and certificates in a school presentation space" />
+              <img src="./images/3images.jpeg" alt="Students with guests and certificates in a school presentation space" loading="lazy" />
             </article>
 
             <article class="gallery-card">
-              <img src="./images/4images.jpeg" alt="Classroom session with students listening during an educational talk" />
+              <img src="./images/4images.jpeg" alt="Classroom session with students listening during an educational talk" loading="lazy" />
             </article>
 
             <article class="gallery-card">
-              <img src="./images/5images.jpeg" alt="Students attending a lecture in a classroom" />
+              <img src="./images/5images.jpeg" alt="Students attending a lecture in a classroom" loading="lazy" />
             </article>
 
             <article class="gallery-card">
-              <img src="./images/6images.jpeg" alt="Students attending a lecture in a classroom" />
+              <img src="./images/6images.jpeg" alt="Students attending a lecture in a classroom" loading="lazy" />
+            </article>
+
+            <article class="gallery-card">
+              <img src="./images/7images.jpeg" alt="Students sitting in a classroom during an activity-based learning session" loading="lazy" />
+            </article>
+
+            <article class="gallery-card">
+              <img src="./images/8imges.jpeg" alt="Students and facilitators during a school program gathering" loading="lazy" />
+            </article>
+
+            <article class="gallery-card">
+              <img src="./images/aboutimg.jpeg" alt="Education Beyond Borders classroom interaction with students" loading="lazy" />
+            </article>
+
+            <article class="gallery-card">
+              <img src="./images/partnership-ref-1.jpeg" alt="Students and school representatives during a partnership program" loading="lazy" />
+            </article>
+
+            <article class="gallery-card">
+              <img src="./images/partnership-ref-2.jpeg" alt="Partner engagement moment from an Education Beyond Borders program" loading="lazy" />
+            </article>
+
+            <article class="gallery-card">
+              <img src="./images/partnership-ref-3.jpeg" alt="Students participating in a school partnership activity" loading="lazy" />
+            </article>
+
+            <article class="gallery-card">
+              <img src="./images/partnership-ref-4.jpeg" alt="Group photograph from a school collaboration event" loading="lazy" />
+            </article>
+
+            <article class="gallery-card">
+              <img src="./images/partnership-ref-5.jpeg" alt="Education Beyond Borders program moment with students and facilitators" loading="lazy" />
+            </article>
+
+            <article class="gallery-card">
+              <img src="./images/partnership-ref-6.jpeg" alt="Students attending a learning and development session" loading="lazy" />
+            </article>
+
+            <article class="gallery-card">
+              <img src="./images/WhatsApp Image 2026-04-17 at 7.49.59 PM.jpeg" alt="Students and facilitators gathered during a school session" loading="lazy" />
+            </article>
+
+            <article class="gallery-card">
+              <img src="./images/WhatsApp Image 2026-04-18 at 4.25.30 PM (1).jpeg" alt="Students holding certificates after completing a program activity" loading="lazy" />
+            </article>
+
+            <article class="gallery-card">
+              <img src="./images/WhatsApp Image 2026-04-18 at 4.25.30 PM.jpeg" alt="School students and team members celebrating a program milestone" loading="lazy" />
             </article>
           </div>
         </section>
       </main>
 
       <footer class="footer">
-        <div class="footer__grid">
-          <div>
-            <div class="brand brand--footer">
-              <div class="brand__logo brand__logo--footer" aria-label="Education Beyond Borders">
-                <img class="brand__logo-image brand__logo-image--footer" src="./icons/logo.png" alt="Education Beyond Borders logo" />
-              </div>
-            </div>
-            <p class="footer__copy">
-              Empowering communities through skill development, school partnerships, and
-              impact-driven educational programs.
-            </p>
-            <div class="socials" aria-label="Social links">
-
-              <a aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-8h3l1-4h-4V8c0-1.15.39-2 2-2h2V2.5A21.4 21.4 0 0 0 14 2c-3 0-5 1.79-5 5v3H6v4h3v8Z" /></svg></a>
-              <a aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M22 5.92a8.36 8.36 0 0 1-2.36.64A4.1 4.1 0 0 0 21.45 4a8.18 8.18 0 0 1-2.6 1A4.07 4.07 0 0 0 12 7.87a11.55 11.55 0 0 1-8.38-4.25 4.07 4.07 0 0 0 1.26 5.43A4 4 0 0 1 3 8.49v.05a4.08 4.08 0 0 0 3.27 4 4.1 4.1 0 0 1-1.83.07 4.08 4.08 0 0 0 3.8 2.83A8.18 8.18 0 0 1 2 17.54 11.53 11.53 0 0 0 8.29 19.4c7.55 0 11.67-6.25 11.67-11.66 0-.18 0-.36-.01-.53A8.26 8.26 0 0 0 22 5.92Z" /></svg></a>
-              <a aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.38a1.13 1.13 0 1 1-1.13 1.13 1.13 1.13 0 0 1 1.13-1.13Z" /></svg></a>
-              <a href="https://www.linkedin.com/company/educationbeyondborders/" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38ZM5.25 3A1.95 1.95 0 1 0 7.2 4.95 1.95 1.95 0 0 0 5.25 3Zm15.19 8.2c0-3.02-1.61-4.43-3.76-4.43a3.24 3.24 0 0 0-2.93 1.61V8.5h-3.24c.04.63 0 11.5 0 11.5h3.24v-6.42a2.14 2.14 0 0 1 .1-.77 2.12 2.12 0 0 1 1.98-1.42c1.39 0 1.95 1.06 1.95 2.62V20H21s.04-5.55.04-8.8Z"/></svg></a>
-            </div>
-          </div>
-
-          <div class="footer__links">
-            <a href="./about.html">About us</a>
-            <a href="./programs.html">Our Programs</a>
-            <a href="./report.html">Impact Report</a>
-            <!-- <a href="./blog.html">Blog</a> -->
-
-            <a href="./partnerships.html">Partnerships</a>
-          <a href="./career.html">Careers</a>
-          <a href="./gallery.html">Gallery</a>
-          </div>
-
-          <div class="footer__links">
-            <a href="./contact.html">Partner with CSR</a>
-            <a href="./contact.html">Partner with School</a>
-          </div>
-
-        <div class="footer__contact">
-          <div class="footer__contact-item">
-            <img src="./icons/location.svg" alt="" aria-hidden="true" />
-            <span>40C, Green View Apartments, Sector-15A, Noida, Uttar Pradesh-201301</span>
-          </div>
-          <div class="footer__contact-item">
-            <img src="./icons/phone.svg" alt="" aria-hidden="true" />
-            <span>+91 9871440094</span>
-          </div>
-          <div class="footer__contact-item">
-            <img src="./icons/email.svg" alt="" aria-hidden="true" />
-            <span>connect@ebbindia.com</span>
-          </div>
+  <div class="footer__grid">
+    <div>
+      <div class="brand brand--footer">
+        <div class="brand__logo brand__logo--footer" aria-label="Education Beyond Borders">
+          <img class="brand__logo-image brand__logo-image--footer" src="./icons/logo.png" alt="Education Beyond Borders logo" />
         </div>
-        </div>
+      </div>
+      <p class="footer__copy">
+        Empowering communities through skill development, school partnerships, and
+        impact-driven educational programs.
+      </p>
+      <div class="socials" aria-label="Social links">
+        <a aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-8h3l1-4h-4V8c0-1.15.39-2 2-2h2V2.5A21.4 21.4 0 0 0 14 2c-3 0-5 1.79-5 5v3H6v4h3v8Z" /></svg></a>
+        <a aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M22 5.92a8.36 8.36 0 0 1-2.36.64A4.1 4.1 0 0 0 21.45 4a8.18 8.18 0 0 1-2.6 1A4.07 4.07 0 0 0 12 7.87a11.55 11.55 0 0 1-8.38-4.25 4.07 4.07 0 0 0 1.26 5.43A4 4 0 0 1 3 8.49v.05a4.08 4.08 0 0 0 3.27 4 4.1 4.1 0 0 1-1.83.07 4.08 4.08 0 0 0 3.8 2.83A8.18 8.18 0 0 1 2 17.54 11.53 11.53 0 0 0 8.29 19.4c7.55 0 11.67-6.25 11.67-11.66 0-.18 0-.36-.01-.53A8.26 8.26 0 0 0 22 5.92Z" /></svg></a>
+        <a aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.38a1.13 1.13 0 1 1-1.13 1.13 1.13 1.13 0 0 1 1.13-1.13Z" /></svg></a>
+        <a href="https://www.linkedin.com/company/educationbeyondborders/" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38ZM5.25 3A1.95 1.95 0 1 0 7.2 4.95 1.95 1.95 0 0 0 5.25 3Zm15.19 8.2c0-3.02-1.61-4.43-3.76-4.43a3.24 3.24 0 0 0-2.93 1.61V8.5h-3.24c.04.63 0 11.5 0 11.5h3.24v-6.42a2.14 2.14 0 0 1 .1-.77 2.12 2.12 0 0 1 1.98-1.42c1.39 0 1.95 1.06 1.95 2.62V20H21s.04-5.55.04-8.8Z" /></svg></a>
+      </div>
+    </div>
 
-        <div class="footer__bottom">
-          <span>&copy; 2026 Education Beyond Borders. All rights reserved.</span>
-          <div class="footer__bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-          </div>
-        </div>
-      </footer>
+    <div class="footer__links">
+      <a href="./about.html">About us</a>
+      <a href="./programs.html">Our Programs</a>
+      <a href="./report.html">Impact Report</a>
+      <a href="./partnerships.html">Partnerships</a>
+      <a href="./career.html">Careers</a>
+      <a href="./gallery.html">Gallery</a>
+    </div>
+
+    <div class="footer__links">
+      <a href="./contact.html">Partner with CSR</a>
+      <a href="./contact.html">Partner with School</a>
+    </div>
+
+    <div class="footer__contact">
+      <div class="footer__contact-item">
+        <img src="./icons/location.svg" alt="" aria-hidden="true" />
+        <span>40C, Green View Apartments, Sector-15A, Noida, Uttar Pradesh-201301</span>
+      </div>
+      <div class="footer__contact-item">
+        <img src="./icons/phone.svg" alt="" aria-hidden="true" />
+        <a href="tel:+919871440094">+91 9871440094</a>
+      </div>
+      <div class="footer__contact-item">
+        <img src="./icons/email.svg" alt="" aria-hidden="true" />
+        <a href="mailto:connect@ebbindia.com">connect@ebbindia.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <span>&copy; 2026 Education Beyond Borders. All rights reserved.</span>
+    <div class="footer__bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
     </div>
     <script src="./script.js"></script>
   </body>
