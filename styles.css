@@ -1775,6 +1775,26 @@ img {
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: 1fr;
+    width: min(100% - 32px, 1120px);
+    gap: 18px;
+  }
+
+  .gallery {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .gallery-card {
+    border-radius: 18px;
+  }
+
+  .gallery-card img {
+    width: 100%;
+    height: auto;
+    min-height: 220px;
+    max-height: none;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
   }
 }
 
@@ -2996,7 +3016,9 @@ img {
   }
 
   .gallery-card img {
-    height: 320px;
+    height: auto;
+    min-height: 220px;
+    aspect-ratio: 4 / 3;
   }
 
   .card h3 {
@@ -4292,5 +4314,40 @@ img {
 
   .logo-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery.section .gallery-grid {
+    width: min(100% - 32px, 1120px);
+    margin: 38px auto 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 18px;
+  }
+
+  .gallery.section .gallery-card {
+    min-height: 0;
+    border-radius: 18px;
+  }
+
+  .gallery.section .gallery-card img {
+    width: 100%;
+    height: auto;
+    min-height: 220px;
+    max-height: none;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 520px) {
+  .gallery.section .gallery-grid {
+    width: calc(100vw - 28px);
+    gap: 16px;
+  }
+
+  .gallery.section .gallery-card img {
+    min-height: 200px;
   }
 }
